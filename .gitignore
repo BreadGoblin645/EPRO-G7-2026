@@ -32,9 +32,7 @@ out/
 *.iml
 *.iws
 *.ipr
-.vscode/settings.json
-.vscode/launch.json
-.vscode/tasks.json
+.vscode/*.json
 
 # Maven
 .mvn/
