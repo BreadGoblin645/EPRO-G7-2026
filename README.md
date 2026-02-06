@@ -1,9 +1,12 @@
 # EPRO-G7-2026
-Repositorio del grupo N7 en la clase de Estandares de Programacion, Universidad Tecnologica de El Salvador. 2026
+
+Universidad Tecnologica de El Salvador. 2026
+Repositorio del grupo N7 en la clase de Estandares de Programacion, 
+
 
 ## Estructura del Proyecto
 
-Este proyecto es una aplicación web Java configurada para Visual Studio Code.
+Este proyecto es una aplicación web Java en el que hemos desarrollado una aplicación web tipo tienda en línea para un negocio pequeño, donde el propietario desea vender productos (para nuestro ejemplo, velas aromáticas). El sistema permitirá a los clientes consultar el catálogo, realizar compras y registrar sus pedidos. Además, el sistema incorporará un módulo de control antifraude simulado basado en reglas simples para detectar comportamientos sospechosos y generar alertas para el administrador.
 
 ### Estructura de Carpetas
 
@@ -25,7 +28,7 @@ EPRO-G7-2026/
 
 ### Desarrollo
 
-Este proyecto está configurado para ser desarrollado con:
+Este proyecto sera desarrollado con:
 - Java
 - Visual Studio Code
-- Maven o Gradle (por configurar)
+- Maven o Gradle
