@@ -1,8 +1,7 @@
 # EPRO-G7-2026
 
-#Universidad Tecnologica de El Salvador. 2026
-##Estandares de Programacion, 
-Repositorio del grupo N7
+# Universidad Tecnologica de El Salvador. 2026
+# Estandares de Programacion - Repositorio del grupo N7
 
 
 ## Estructura del Proyecto
