@@ -25,6 +25,7 @@ EPRO-G7-2026/
 └── docs                 # Documentos del proyecto 
 ```
 
+
 ### Desarrollo
 
 Este proyecto sera desarrollado con:
