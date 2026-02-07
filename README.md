@@ -16,19 +16,19 @@ EPRO-G7-2026/
 │   ├── main/
 │   │   ├── java/          # Código fuente Java principal
 │   │   ├── resources/     # Archivos de configuración y recursos
-│   │   └── webapp/        # Recursos web (HTML, CSS, JS, JSP)
 │   └── test/
 │       ├── java/          # Código fuente de pruebas
 │       └── resources/     # Recursos para pruebas
 ├── lib/                   # Bibliotecas externas
-├── .vscode/              # Configuración de Visual Studio Code
 ├── target/               # Archivos compilados (no se incluye en Git)
 └── .gitignore           # Archivos y carpetas ignorados por Git
+└── docs                 # Documentos del proyecto 
 ```
 
 ### Desarrollo
 
 Este proyecto sera desarrollado con:
 - Java
+- SpringBoot
 - Visual Studio Code
-- Maven o Gradle
+- Maven
