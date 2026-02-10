@@ -20,7 +20,7 @@ EPRO-G7-2026/
 │       ├── java/          # Código fuente de pruebas
 │       └── resources/     # Recursos para pruebas
 ├── lib/                   # Bibliotecas externas
-├── target/               # Archivos compilados (no se incluye en Git)
+├── target/               # Archivos compilados
 └── .gitignore           # Archivos y carpetas ignorados por Git
 └── docs                 # Documentos del proyecto
 └── db_mysql             # Base de datos MySQL
