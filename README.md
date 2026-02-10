@@ -22,7 +22,8 @@ EPRO-G7-2026/
 ├── lib/                   # Bibliotecas externas
 ├── target/               # Archivos compilados (no se incluye en Git)
 └── .gitignore           # Archivos y carpetas ignorados por Git
-└── docs                 # Documentos del proyecto 
+└── docs                 # Documentos del proyecto
+└── db_mysql             # Base de datos MySQL
 ```
 
 
