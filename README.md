@@ -34,3 +34,4 @@ Este proyecto sera desarrollado con:
 - SpringBoot
 - Visual Studio Code
 - Maven
+- MySQL
