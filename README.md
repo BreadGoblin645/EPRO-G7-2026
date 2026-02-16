@@ -12,18 +12,29 @@ Este proyecto es una aplicación web Java en el que hemos desarrollado una aplic
 
 ```
 EPRO-G7-2026/
-├── src/
-│   ├── main/
-│   │   ├── java/          # Código fuente Java principal
-│   │   ├── resources/     # Archivos de configuración y recursos
-│   └── test/
-│       ├── java/          # Código fuente de pruebas
-│       └── resources/     # Recursos para pruebas
-├── lib/                   # Bibliotecas externas
-├── target/               # Archivos compilados
-└── .gitignore           # Archivos y carpetas ignorados por Git
-└── docs                 # Documentos del proyecto
-└── db_mysql             # Base de datos MySQL
+├── Project/
+│   └── eprog7/
+│       ├── src/
+│       │   ├── main/
+│       │   │   ├── java/          # Código fuente Java
+│       │   │   └── resources/     # application.properties, templates, static
+│       │   ├── test/
+│       │   │   ├── java/
+│       │   │   └── resources/
+│       │   ├── pom.xml
+│       │   └── .mvn/
+│
+├── Docs/                          # Documentación del proyecto
+│   ├── Entregas/
+│   └── diagramas/
+│
+├── SQL/                           # Scripts para crear la base de datos
+│   ├── schema.sql
+│   └── data.sql
+│
+├── README.md
+└── .gitignore
+
 ```
 
 
