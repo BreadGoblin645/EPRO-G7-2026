@@ -1,0 +1,67 @@
+<!-- header -->
+<div th:fragment="navBar">
+    <nav class="py-2 bg-light border-bottom">
+        <div class="container d-flex flex-wrap">
+
+            <!-- Lista de enlaces -->
+            <ul class="nav me-auto">
+                <li class="nav-item"><a href="/" class="nav-link px-2 link-dark">Home</a></li>
+                <li class="nav-item"><a href="/" class="nav-link px-2 link-dark">Catalogo</a></li>
+
+                <!-- Enlace a My AnimeList solo si el usuario está logueado --> 
+                <!--
+                <li class="nav-item" th:if="${session.loggedInUsername != null}">
+                    <a href="/my-anime-list" class="nav-link px-2 link-dark">My AnimeList</a></li>
+                </li>
+                -->
+
+
+                <li class="nav-item"><a href="/about"         class="nav-link px-2 link-dark">About</a></li>
+            </ul>
+
+            <!-- Buscador -->
+            <form th:action="@{/search-results}" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0">
+                <input
+                    type="search"
+                    name="busqueda"
+                    class="form-control"
+                    placeholder="Buscar…"
+                    aria-label="Buscar"
+                    th:value="${searchTerm}">
+            </form>
+
+
+            <!-- Lista de enlaces de usuario -->
+            <ul class="nav">
+                <!-- Si no hay usuario logueado: mostrar Login y Sign up -->
+                <li class="nav-item" th:if="${session.loggedInUsername == null}">
+                    <a href="/login" class="nav-link px-2 link-dark">Login</a>
+                </li>
+                <li class="nav-item" th:if="${session.loggedInUsername == null}">
+                    <a href="/signup" class="nav-link px-2 link-dark">Sign up</a>
+                </li>
+
+                <!-- Si sí hay usuario en sesión: mostrar <username> y Logout -->
+                <li class="nav-item" th:if="${session.loggedInUsername != null}">
+                    <a th:href="@{/usuario/{u}(u=${session.loggedInUsername})}"
+                       class="nav-link px-2 link-dark"
+                       th:text="${session.loggedInUsername}">
+                        Username
+                    </a>
+                </li>
+                <li class="nav-item" th:if="${session.loggedInUsername != null}">
+                    <a href="/logout" class="nav-link px-2 link-dark">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!-- banner -->
+<div th:fragment="banner">
+    <!-- Imagen de banner (logo) -->
+       
+
+ <img th:src="@{/media/logo.jpg}" alt="Logo" height="300"/>
+
+</div>
