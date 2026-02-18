@@ -40,9 +40,12 @@ EPRO-G7-2026/
 
 ### Desarrollo
 
-Este proyecto sera desarrollado con:
-- Java
-- SpringBoot
-- Visual Studio Code
-- Maven
-- MySQL
+Este proyecto fue desarrollado utilizando el siguiente stack tecnologico:
+-Java 21
+-Apache Tomcat 11.0.9
+-Jakarta Servlet API 6.1
+-JSP (Jakarta Server Pages)
+-Maven (gestion de dependencias y empaquetado WAR)
+-MySQL 8+
+-JDBC (Driver MySQL Connector/J 9.5.0)
+-Visual Studio Code
