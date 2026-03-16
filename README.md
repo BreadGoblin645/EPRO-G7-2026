@@ -19,7 +19,7 @@ EPRO-G7-2026/
 │       │   │   ├── java/          # Código fuente Java
 │       │   │   ├── webapp/        # Todas las JSP (Java Server Pages)
 │       │   │   └── resources/     # application.properties, templates, static
-│       │   └── pom.xml 
+│       │   └── pom.xml
 │
 ├── Docs/                          # Documentación del proyecto
 │   ├── Entregas/
