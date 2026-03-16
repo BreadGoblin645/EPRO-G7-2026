@@ -13,16 +13,13 @@ Este proyecto es una aplicación web Java en el que hemos desarrollado una aplic
 ```
 EPRO-G7-2026/
 ├── Project/
-│   └── eprog7/
+│   └── AnimeCandles/
 │       ├── src/
 │       │   ├── main/
 │       │   │   ├── java/          # Código fuente Java
+│       │   │   ├── webapp/        # Todas las JSP (Java Server Pages) 
 │       │   │   └── resources/     # application.properties, templates, static
-│       │   ├── test/
-│       │   │   ├── java/
-│       │   │   └── resources/
-│       │   ├── pom.xml
-│       │   └── .mvn/
+│       │   └── pom.xml
 │
 ├── Docs/                          # Documentación del proyecto
 │   ├── Entregas/
