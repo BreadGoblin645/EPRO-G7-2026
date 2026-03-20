@@ -21,7 +21,7 @@ EPRO-G7-2026/
 │       │   │   └── resources/     # application.properties, templates, static
 │       │   └── pom.xml
 │
-├── Docs/                          # Documentación del proyecto
+├── Docs/                          # Documentacion del proyecto
 │   ├── Entregas/
 │   └── diagramas/
 │
