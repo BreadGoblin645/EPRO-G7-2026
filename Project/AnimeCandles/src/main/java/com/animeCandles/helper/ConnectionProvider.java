@@ -22,9 +22,14 @@ public class ConnectionProvider {
                     props.load(in);
                 }
 
-                String url = props.getProperty("db.url");
+                String host = props.getProperty("db.host");
+                String port = props.getProperty("db.port");
+                String dbName = props.getProperty("db.name");
                 String user = props.getProperty("db.user");
                 String pass = props.getProperty("db.password");
+
+                String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName +
+                        "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(url, user, pass);
