@@ -83,11 +83,11 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 			<div class="col-md-6">
 				<div class="container-fluid my-5">
 					<h4><%=product.getProductName()%></h4>
-					<span class="fs-5"><b>Description</b></span><br> <span><%=product.getProductDescription()%></span><br>
+					<span class="fs-5"><b>Descripcion</b></span><br> <span><%=product.getProductDescription()%></span><br>
 					<span class="real-price">$<%=product.getProductPriceAfterDiscount()%></span>&ensp;
 					<span class="product-price">$<%=product.getProductPrice()%></span>&ensp;
 					<span class="product-discount"><%=product.getProductDiscount()%>&#37;off</span><br>
-					<span class="fs-5"><b>Status : </b></span> <span id="availability">
+					<span class="fs-5"><b>Estado : </b></span> <span id="availability">
 						<%
 						if (product.getProductQunatity() > 0) {
 							out.println("Available");
@@ -95,27 +95,27 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 							out.println("Currently Out of stock");
 						}
 						%>
-					</span><br> <span class="fs-5"><b>Category : </b></span> <span><%=catDao.getCategoryName(product.getCategoryId())%></span>
+					</span><br> <span class="fs-5"><b>Categoria : </b></span> <span><%=catDao.getCategoryName(product.getCategoryId())%></span>
 					<form method="post">
 						<div class="container-fluid text-center mt-3">
 							<%
 							if (user == null) {
 							%>
 							<button type="button" onclick="window.open('login.jsp', '_self')"
-								class="btn btn-primary text-white btn-lg">Add to Cart</button>
+								class="btn btn-primary text-white btn-lg">Agregar Carrito</button>
 							&emsp;
 							<button type="button" onclick="window.open('login.jsp', '_self')"
-								class="btn btn-info text-white btn-lg">Buy Now</button>
+								class="btn btn-info text-white btn-lg">Comprar Ahora</button>
 							<%
 							} else {
 							%>
 							<button type="submit"
 								formaction="./AddToCartServlet?uid=<%=user.getUserId()%>&pid=<%=product.getProductId()%>"
-								class="btn btn-primary text-white btn-lg">Add to Cart</button>
+								class="btn btn-primary text-white btn-lg">Agregar Carrito</button>
 							&emsp; <a
 								href="checkout.jsp" id="buy-btn"
 								class="btn btn-info text-white btn-lg" role="button"
-								aria-disabled="true">Buy Now</a> 
+								aria-disabled="true">Comprar Ahora</a> 
 							<%
 							}
 							%>

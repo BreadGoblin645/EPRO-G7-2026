@@ -85,13 +85,12 @@ List<Category> categoryList = catDao.getAllCategories();
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link" href="products.jsp"
-					role="button" aria-expanded="false"> Products </a>
+					role="button" aria-expanded="false"> Productos </a>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> Category </a>
+					data-bs-toggle="dropdown" aria-expanded="false"> Categorias </a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="products.jsp?category=0">All
-								Products</a></li>
+						<li><a class="dropdown-item" href="products.jsp?category=0">Todos los productos</a></li>
 						<%
 						for (Category c : categoryList) {
 						%>
@@ -107,7 +106,7 @@ List<Category> categoryList = catDao.getAllCategories();
 				<input name="search" class="form-control me-2" size="50"
 					type="search" placeholder="Search for products" aria-label="Search"
 					style="background-color: white !important;">
-				<button class="btn btn-outline-light" type="submit">Search</button>
+				<button class="btn btn-outline-light" type="submit">Buscar</button>
 			</form>
 
 			<!-- when user is logged in -->
@@ -134,11 +133,11 @@ List<Category> categoryList = catDao.getAllCategories();
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active pe-2"><a class="nav-link"
 					aria-current="page" href="register.jsp"> <i
-						class="fa-solid fa-user-plus" style="color: #ffffff;"></i>&nbsp;Register
+						class="fa-solid fa-user-plus" style="color: #ffffff;"></i>&nbsp;Registrarse
 				</a></li>
 				<li class="nav-item pe-2"><a class="nav-link"
 					aria-current="page" href="login.jsp"><i
-						class="fa-solid fa-user-lock" style="color: #fafafa;"></i>&nbsp;Login</a></li>
+						class="fa-solid fa-user-lock" style="color: #fafafa;"></i>&nbsp;Iniciar</a></li>
 				<li class="nav-item pe-2"><a class="nav-link"
 					aria-current="page" href="adminlogin.jsp">&nbsp;Admin</a></li>
 			</ul>

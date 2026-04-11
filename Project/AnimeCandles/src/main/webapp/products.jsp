@@ -18,7 +18,7 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 List<Product> prodList = null;
 if (searchKey != null) {
 	if (!searchKey.isEmpty()) {
-		message = "Showing results for \"" + searchKey + "\"";
+		message = "Resultados  \"" + searchKey + "\"";
 	}else{
 		message = "No product found!";
 	}
@@ -26,15 +26,15 @@ if (searchKey != null) {
 
 } else if (catId != null && !(catId.trim().equals("0"))) {
 	prodList = productDao.getAllProductsByCategoryId(Integer.parseInt(catId.trim()));
-	message = "Showing results for \"" + categoryDao.getCategoryName(Integer.parseInt(catId.trim())) + "\"";
+	message = "Mostrando resultados en \"" + categoryDao.getCategoryName(Integer.parseInt(catId.trim())) + "\"";
 } else {
 	prodList = productDao.getAllProducts();
-	message = "All Products";
+	message = "Todos los productos";
 }
 
 if (prodList != null && prodList.size() == 0) {
 
-	message = "No items are available for \""
+	message = "No hay productos disponibles con \""
 	+ (searchKey != null ? searchKey : categoryDao.getCategoryName(Integer.parseInt(catId.trim()))) + "\"";
 
 	prodList = productDao.getAllProducts();
@@ -137,7 +137,7 @@ if (prodList != null && prodList.size() == 0) {
 						<div class="container text-center mb-2 mt-2">
 							<button type="button"
 								onclick="window.open('viewProduct.jsp?pid=<%=p.getProductId()%>', '_self')"
-								class="btn btn-primary text-white">View Details</button>
+								class="btn btn-primary text-white">Ver Detalles</button>
 						</div>
 					</div>
 				</div>

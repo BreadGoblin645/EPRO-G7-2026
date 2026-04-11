@@ -144,7 +144,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 
 	<!-- product with heavy deals -->
 	<div class="container-fluid py-3 px-3" style="background: #f0fffe;">
-		<h3>Hot Deals</h3>
+		<h3>Productos en descuento</h3>
 		<div class="row row-cols-1 row-cols-md-4 g-3">
 			<%
 			for (int i = 0; i < Math.min(4, topDeals.size()); i++) {
