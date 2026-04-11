@@ -7,9 +7,9 @@ if (activeUser == null) {
 	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("login.jsp");
-	return;  
+	return;
 }
-%>  
+%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -64,11 +64,11 @@ if (activeUser == null) {
 							class="list-group-item list-group-item-action cus-active list-btn"
 							aria-current="true">Profile Information</button>
 						<button type="button" id="wishlist-btn"
-							class="list-group-item list-group-item-action list-btn">My
-							Wishlist</button>
+							class="list-group-item list-group-item-action list-btn">My Wishlist</button>
 						<button type="button" id="order-btn"
-							class="list-group-item list-group-item-action list-btn">My
-							Orders</button>
+							class="list-group-item list-group-item-action list-btn">My Orders</button>
+						<button type="button" id="change-password-btn"
+							class="list-group-item list-group-item-action list-btn">Change Password</button>
 						<button type="button" id="logout-btn"
 							class="list-group-item list-group-item-action list-btn"
 							onclick="window.open('LogoutServlet?user=user', '_self')">Logout</button>
@@ -87,6 +87,9 @@ if (activeUser == null) {
 					<div id="order" style="display: none;">
 						<%@include file="order.jsp"%>    
 					</div>
+					<div id="change-password" style="display: none;">
+						<%@include file="change_password_form.jsp"%>
+					</div>
 				</div>
 			</div>  
 		</div>
@@ -94,39 +97,52 @@ if (activeUser == null) {
 
 	<script>
 		$(document).ready(function() {
-
 			$('#profile-btn').click(function() {
-
 				$('#profile').show();
 				$('#wishlist').hide();
 				$('#order').hide();
-				
+				$('#change-password').hide();
+
 				$(this).addClass('cus-active');
 				$('#wishlist-btn').removeClass('cus-active');
 				$('#order-btn').removeClass('cus-active');
-				
-
+				$('#change-password-btn').removeClass('cus-active');
 			});
-			$('#wishlist-btn').click(function() {
 
+			$('#wishlist-btn').click(function() {
 				$('#wishlist').show();
 				$('#profile').hide();
 				$('#order').hide();
-				
+				$('#change-password').hide();
+
 				$(this).addClass('cus-active');
 				$('#profile-btn').removeClass('cus-active');
 				$('#order-btn').removeClass('cus-active');
-				
+				$('#change-password-btn').removeClass('cus-active');
 			});
-			$('#order-btn').click(function() {
 
+			$('#order-btn').click(function() {
 				$('#order').show();
 				$('#profile').hide();
 				$('#wishlist').hide();
-				
+				$('#change-password').hide();
+
 				$(this).addClass('cus-active');
 				$('#profile-btn').removeClass('cus-active');
 				$('#wishlist-btn').removeClass('cus-active');
+				$('#change-password-btn').removeClass('cus-active');
+			});
+
+			$('#change-password-btn').click(function() {
+				$('#change-password').show();
+				$('#profile').hide();
+				$('#wishlist').hide();
+				$('#order').hide();
+
+				$(this).addClass('cus-active');
+				$('#profile-btn').removeClass('cus-active');
+				$('#wishlist-btn').removeClass('cus-active');
+				$('#order-btn').removeClass('cus-active');
 			});
 		});
 	</script>

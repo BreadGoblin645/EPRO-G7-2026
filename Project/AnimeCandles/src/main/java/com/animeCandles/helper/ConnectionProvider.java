@@ -6,16 +6,15 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class ConnectionProvider {
-
     private static Connection connection;
 
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
-
+                
                 Properties props = new Properties();
-                try (InputStream in = ConnectionProvider.class.getClassLoader()
-                        .getResourceAsStream("db.properties")) {
+                
+                try (InputStream in = ConnectionProvider.class.getClassLoader().getResourceAsStream("db.properties")) {
                     if (in == null) {
                         throw new RuntimeException("db.properties no encontrado en classpath");
                     }
@@ -28,9 +27,9 @@ public class ConnectionProvider {
                 String user = props.getProperty("db.user");
                 String pass = props.getProperty("db.password");
 
-                String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName +
+                String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + 
                         "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-
+                
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(url, user, pass);
             }
