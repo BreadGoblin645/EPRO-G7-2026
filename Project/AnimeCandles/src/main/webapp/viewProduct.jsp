@@ -17,6 +17,14 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 <title>View Product</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style type="text/css">
+.cus-card {
+	border-radius: 50%;
+	border-color: transparent;
+	max-height: 200px;
+	max-width: 200px;
+	max-height: 200px;
+}
+
 .real-price {
 	font-size: 26px !important;
 	font-weight: 600;
@@ -38,7 +46,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 	<!--navbar -->
 	<%@include file="Components/navbar.jsp"%>
 
-		<!-- Category list -->
+	<!-- Category list -->
 	<div class="container-fluid px-3 py-3"
 		style="background-color: #e3f7fc;">
 		<div class="row">
@@ -54,7 +62,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 								<img src="Product_imgs\<%=c.getCategoryImage()%>" class="mt-3 "
 									style="max-width: 100%; max-height: 100px; width: auto; height: auto;">
 							</div>
-							<h6><%=c.getCategoryName()%></h6>
+							<!-- <h6><%=c.getCategoryName()%></h6> -->
 						</div>
 					</a>
 				</div>
@@ -84,18 +92,26 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 				<div class="container-fluid my-5">
 					<h4><%=product.getProductName()%></h4>
 					<span class="fs-5"><b>Descripcion</b></span><br> <span><%=product.getProductDescription()%></span><br>
-					<span class="real-price">$<%=product.getProductPriceAfterDiscount()%></span>&ensp;
-					<span class="product-price">$<%=product.getProductPrice()%></span>&ensp;
-					<span class="product-discount"><%=product.getProductDiscount()%>&#37;off</span><br>
-					<span class="fs-5"><b>Estado : </b></span> <span id="availability">
+
+					<% if (product.getProductDiscount() > 0) { %>
+						<span class="real-price">$<%=product.getProductPriceAfterDiscount()%></span>&ensp;
+						<span class="product-price"><del>$<%=product.getProductPrice()%></del></span>&ensp;
+						<span class="product-discount"><%=product.getProductDiscount()%>&#37; off</span><br>
+					<% } else { %>
+						<span class="real-price">$<%=product.getProductPrice()%></span><br>
+					<% } %>
+					
+					<span class="fs-5"><b>Estado : </b></span>
+					<span id="availability">
 						<%
 						if (product.getProductQunatity() > 0) {
-							out.println("Available");
+							out.println("Disponible");
 						} else {
-							out.println("Currently Out of stock");
+							out.println("Sin Inventario");
 						}
 						%>
-					</span><br> <span class="fs-5"><b>Categoria : </b></span> <span><%=catDao.getCategoryName(product.getCategoryId())%></span>
+					</span><br>
+					<span class="fs-5"><b>Categoria : </b></span> <span><%=catDao.getCategoryName(product.getCategoryId())%></span>
 					<form method="post">
 						<div class="container-fluid text-center mt-3">
 							<%
@@ -127,7 +143,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 	</div>
 	<script>
 		$(document).ready(function() {
-			if ($('#availability').text().trim() == "Currently Out of stock") {
+			if ($('#availability').text().trim() == "Sin Inventario") {
 				$('#availability').css('color', 'red');
 				$('.btn').addClass('disabled');
 			}

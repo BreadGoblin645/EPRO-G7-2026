@@ -59,7 +59,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 								<img src="Product_imgs\<%=c.getCategoryImage()%>" class="mt-3 "
 									style="max-width: 100%; max-height: 100px; width: auto; height: auto;">
 							</div>
-							<h6><%=c.getCategoryName()%></h6>
+							<!-- <h6><%=c.getCategoryName()%></h6>> -->
 						</div>
 					</a>
 				</div>
@@ -109,7 +109,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 				</div>
 			</div>
 			<%
-			for (int i = 0; i < Math.min(3, productList.size()); i++) {
+			for (int i = 0; i < Math.min(7, productList.size()); i++) {
 			%>
 			<div class="col">
 				<a href="viewProduct.jsp?pid=<%=productList.get(i).getProductId()%>"
@@ -125,10 +125,13 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 							<h5 class="card-title text-center"><%=productList.get(i).getProductName()%></h5>
 
 							<div class="container text-center">
-								<span class="real-price">$<%=productList.get(i).getProductPriceAfterDiscount()%></span>
-								&ensp;<span class="product-price">$<%=productList.get(i).getProductPrice()%>
-								</span>&ensp;<span class="product-discount"><%=productList.get(i).getProductDiscount()%>&#37;
-									off</span>
+								<% if (productList.get(i).getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=productList.get(i).getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=productList.get(i).getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=productList.get(i).getProductDiscount()%>&#37; off</span>
+								<% } else { %>
+									<span class="real-price">$<%=productList.get(i).getProductPrice()%></span>
+								<% } %>
 							</div>
 						</div>
 					</div>
@@ -144,7 +147,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 
 	<!-- product with heavy deals -->
 	<div class="container-fluid py-3 px-3" style="background: #f0fffe;">
-		<h3>Productos en descuento</h3>
+		<h3 class="text-center">Productos en DESCUENTO!</h3>
 		<div class="row row-cols-1 row-cols-md-4 g-3">
 			<%
 			for (int i = 0; i < Math.min(4, topDeals.size()); i++) {
@@ -162,10 +165,13 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 							<h5 class="card-title text-center"><%=topDeals.get(i).getProductName()%></h5>
 
 							<div class="container text-center">
-								<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>
-								&ensp;<span class="product-price">$<%=topDeals.get(i).getProductPrice()%>
-								</span>&ensp;<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37;
-									off</span>
+								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+								<% } else { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
+								<% } %>
 							</div>
 						</div>
 					</div>

@@ -61,7 +61,7 @@ CREATE TABLE `cart` (
   KEY `pid_idx` (`pid`),
   CONSTRAINT `pid` FOREIGN KEY (`pid`) REFERENCES `product` (`pid`),
   CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `user` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `order` (
   PRIMARY KEY (`id`),
   KEY `userId_idx` (`userId`),
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `ordered_product` (
   PRIMARY KEY (`oid`),
   KEY `orderid_idx` (`orderid`),
   CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `order` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`pid`),
   KEY `cid_idx` (`cid`),
   CONSTRAINT `cid` FOREIGN KEY (`cid`) REFERENCES `category` (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (15,'Pikachu Candle 01','Pika Pika pika','23.0',23,0,'pikachu_01.png',13);
+INSERT INTO `product` VALUES (15,'Pikachu Candle','Inspirado en Pikachu de Pokemon.<br><br>\r\n\r\nNotas: Pina, coco, cilantro<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br>','15.0',10,30,'pikachu_01.png',13),(16,'Gengar Candle','Inspirado en Gengar de Pokemon.<br><br>\r\n\r\nNotas:  lavender, bergamot, pine<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br>','15.0',20,10,'gengar_01.png',13),(17,'Jigglypuff Candle','Inspirado en Jigglypuff de Pokemon.<br><br>\r\n\r\nNotas: strawberry, raspberry, jasmine<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br>','15.0',0,0,'jigglypuff_01.png',13),(18,'Charmander Candle','Inspirado en Charmander de Pokemon.<br><br>\n\nNotas: mango, melon, peach, jasmine<br>\nTamano: 7 oz (198g) / 4 oz (113g)<br>\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\nWax tipo: Natural Vegana de Soya<br>','20',20,0,'charmander_01.png',13),(19,'Bulbasaur Candle','Inspirado en Bulbasaur de Pokemon.<br><br>\r\n\r\nNotas: orange, citrus, coriander<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br>','20.0',12,40,'Bulbasaur_01.png',13),(20,'Squirtle Candle','Inspirado en Charmander de Pokemon.<br><br>\n\nNotas: mango, pineapple, coconut, orchids<br>\nTamano: 7 oz (198g) / 4 oz (113g)<br>\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\nWax tipo: Natural Vegana de Soya<br>','20',15,10,'Squirtle_01.png',13),(21,'Nezuko Kamado Candle','Inspirada por Nezuko Kamado de Demon Slayer.<br><br>\r\n \r\nNotas: peach, vanilla<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br><br>\r\n \r\n\"Mmmmhmm Mmmmmm Mhhhhmmmmm Mmmmhhh.\"','25.0',10,40,'Nezuko_candle.jpg',12),(22,'Tanjiro Kamado Candle','Inspirada porTanjiro Kamado de Demon Slayer.<br><br>\r\n\r\nNotas: watermelon, cucumber, rose, jasmine<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br><br>\r\n\r\n\"El v�nculo entre Nezuko y el... no puede ser roto por nadie!\"','25.0',10,5,'Tanjiro_candle.jpg',12),(23,'Inosuke Hashibira Candle','Inspirada en Inosuke Hashibira de Demon Slayer.</br></br>\r\n\r\nNotas: apple, peach, grapefruit, tropical floral<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br><br>\r\n\r\n\"Better watch out! Cause\' ready or not, HERE I COME!!\"','20.0',15,10,'Inosuke_candle.jpg',12),(24,'Shinobu Kocho Candle','Inspirada en Shinobu Kocho de Demon Slayer.</br></br>\r\n\r\nNotas: peony, pine, raspberry, citrus<br>\r\nTamano: 7 oz (198g) / 4 oz (113g)<br>\r\nBurn time: 40 - 50 hours / 10 - 18 hours<br>\r\nWax tipo: Natural Vegana de Soya<br><br>\r\n\r\n\"Strength lies not in physical power, but in mental fortitude.\"<br>\r\n','25.0',15,10,'Shinobu_candle.jpg',12);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (6,'Test','t@t.com','123','123123123','Male','2026-02-19 20:11:49','123123','123','12345','La Paz');
+INSERT INTO `user` VALUES (6,'Test','t@t.com','123','123123123','Male','2026-02-19 20:11:49','123123','123','12345','Ahuachapan');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,4 +293,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-22  0:43:55
+-- Dump completed on 2026-04-11 22:06:31

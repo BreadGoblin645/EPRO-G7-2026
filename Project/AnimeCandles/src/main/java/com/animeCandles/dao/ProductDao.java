@@ -172,7 +172,7 @@ public class ProductDao {
 	public List<Product> getDiscountedProducts() {
 		List<Product> list = new ArrayList<Product>();
 		try {
-			String query = "select * from product where discount >= 30 order by discount desc";
+			String query = "select * from product where discount >= 20 order by discount desc";
 			Statement statement = this.con.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
