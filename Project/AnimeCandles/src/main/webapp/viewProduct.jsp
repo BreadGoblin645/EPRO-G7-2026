@@ -9,6 +9,10 @@
 int productId = Integer.parseInt(request.getParameter("pid"));
 ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 Product product = (Product) productDao.getProductsByProductId(productId);
+
+List<Product> prodList = null;
+List<Product> topDeals = productDao.getDiscountedProducts();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -38,6 +42,20 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 .product-discount {
 	font-size: 16px !important;
 	color: #027a3e;
+}
+
+.wishlist-icon {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid #f0f0f0;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .1);
+	padding-right: 40px;
+	background: #fff;
 }
 </style>
 </head>
@@ -141,6 +159,50 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 			</div>
 		</div>
 	</div>
+
+	<!-- product with heavy deals -->
+	<div class="container-fluid py-3 px-3" style="background: #f0fffe;">
+		<h3 class="text-center">Productos en DESCUENTO!</h3>
+		<div class="row row-cols-1 row-cols-md-4 g-3">
+			<%
+			for (int i = 0; i < Math.min(4, topDeals.size()); i++) {
+			%>
+			<div class="col">
+				<a href="viewProduct.jsp?pid=<%=topDeals.get(i).getProductId()%>"
+					style="text-decoration: none;">
+					<div class="card h-100">
+						<div class="container text-center">
+							<img src="Product_imgs\<%=topDeals.get(i).getProductImages()%>"
+								class="card-img-top m-2"
+								style="max-width: 100%; max-height: 200px; width: auto;">
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-center"><%=topDeals.get(i).getProductName()%></h5>
+
+							<div class="container text-center">
+								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+								<% } else { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<%
+			}
+			%>
+		</div>
+	</div>
+	<!-- end -->
+
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
+
 	<script>
 		$(document).ready(function() {
 			if ($('#availability').text().trim() == "Sin Inventario") {
@@ -151,7 +213,7 @@ Product product = (Product) productDao.getProductsByProductId(productId);
 				<%
 				session.setAttribute("pid", productId);
 				session.setAttribute("from", "buy");
-				%>	
+				%>
 				});
 		});
 	</script>

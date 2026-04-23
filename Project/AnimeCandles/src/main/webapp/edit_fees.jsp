@@ -62,5 +62,9 @@ float packagingFee = fees[1];
   </div>
 </div>
 
+<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
+   
 </body>
 </html>

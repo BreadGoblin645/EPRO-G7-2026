@@ -62,6 +62,10 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 			%>
 		</table>
 	</div>
+	
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
 </body>
 </html>
 

@@ -49,6 +49,11 @@ label {
 			</div>
 		</div>
 	</div>
+
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
+	 
 	<script type="text/javascript">
 		var password = document.getElementById("password");
 		var confirm_password = document.getElementById("confirm_password");

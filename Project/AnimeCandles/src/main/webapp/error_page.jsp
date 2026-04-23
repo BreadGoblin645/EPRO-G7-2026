@@ -16,5 +16,9 @@
 		<a href="index.jsp" class="btn btn-outline-primary btn-lg mt-3">Home
 			Page</a>
 	</div>
+
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
 </body>
 </html>

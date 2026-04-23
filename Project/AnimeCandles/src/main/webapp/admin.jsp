@@ -250,6 +250,10 @@ a {
 	</div>
 	<!-- end of modal -->
 
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
+
 	<script type="text/javascript">
 		function validate() {
 			var dis = document.addProductForm.discount.value;

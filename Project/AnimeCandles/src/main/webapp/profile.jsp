@@ -95,6 +95,10 @@ if (activeUser == null) {
 		</div>
 	</div>
 
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!--End Footer-->
+
 	<script>
 		$(document).ready(function() {
 			$('#profile-btn').click(function() {

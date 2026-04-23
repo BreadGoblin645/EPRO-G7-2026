@@ -214,7 +214,7 @@ float packagingFee = fees[1];
         </div>
     </div>
 
-    <!--Change Address Modal -->
+    <!--Change Address -->
     <div class="modal fade" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -281,7 +281,11 @@ float packagingFee = fees[1];
             </div>
         </div>
     </div>
-    <!-- end modal -->
+
+
+    <!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
 
 </body>
 </html>

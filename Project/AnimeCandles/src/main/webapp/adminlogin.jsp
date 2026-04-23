@@ -53,6 +53,10 @@ label {
 			</div>
 		</div>
 	</div>
+	
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!-- end -->
 
 </body>
 </html>

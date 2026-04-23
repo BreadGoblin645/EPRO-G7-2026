@@ -1,4 +1,5 @@
 <%@page import="com.animeCandles.dao.ProductDao"%>
+<%@page import="com.animeCandles.dao.WishlistDao"%>
 <%@page import="com.animeCandles.entities.Product"%>
 <%@page import="com.animeCandles.helper.ConnectionProvider"%>
 <%@page errorPage="error_exception.jsp"%>
@@ -36,6 +37,20 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 .product-discount {
 	font-size: 15px !important;
 	color: #027a3e;
+}
+
+.wishlist-icon {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid #f0f0f0;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .1);
+	padding-right: 40px;
+	background: #fff;
 }
 </style>
 </head>
@@ -210,5 +225,9 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 	%>
 	<!-- end of message -->
 	
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!--End Footer-->
+
 </body>
 </html>

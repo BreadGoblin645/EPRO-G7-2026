@@ -239,6 +239,49 @@ if (prodList != null && prodList.size() == 0) {
 			</div>
 		</div>
 	<% } %>
+
+		<!-- product with heavy deals -->
+	<div class="container-fluid py-3 px-3" style="background: #f0fffe;">
+		<h3 class="text-center">Productos en DESCUENTO!</h3>
+		<div class="row row-cols-1 row-cols-md-4 g-3">
+			<%
+			for (int i = 0; i < Math.min(4, topDeals.size()); i++) {
+			%>
+			<div class="col">
+				<a href="viewProduct.jsp?pid=<%=topDeals.get(i).getProductId()%>"
+					style="text-decoration: none;">
+					<div class="card h-100">
+						<div class="container text-center">
+							<img src="Product_imgs\<%=topDeals.get(i).getProductImages()%>"
+								class="card-img-top m-2"
+								style="max-width: 100%; max-height: 200px; width: auto;">
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-center"><%=topDeals.get(i).getProductName()%></h5>
+
+							<div class="container text-center">
+								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+								<% } else { %>
+									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<%
+			}
+			%>
+		</div>
+	</div>
+	<!-- end -->
+	 
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+
 </body>
 </html>
 

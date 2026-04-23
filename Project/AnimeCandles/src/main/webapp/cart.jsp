@@ -127,6 +127,11 @@ if (activeUser == null) {
 
 		</div>
 	</div>
+
+	<!-- Footer -->
+    <%@ include file="Components/footer.jsp" %>
+	<!--End Footer-->
+	
 	<%
 	}
 	%>
