@@ -84,7 +84,7 @@ public class ChangePasswordServlet extends HttpServlet {
 					response.sendRedirect("profile.jsp");
 				}
 			} else {
-				Message message = new Message("Unable to update password!", "error", "alert-danger");
+				Message message = new Message("No se pudo actualizar la contrasena!", "error", "alert-danger");
 				session.setAttribute("message", message);
 				response.sendRedirect("login.jsp");
 			}

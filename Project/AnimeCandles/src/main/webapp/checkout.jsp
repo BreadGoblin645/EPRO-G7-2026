@@ -11,7 +11,7 @@
 <%
 User activeUser = (User) session.getAttribute("activeUser");
 if (activeUser == null) {
-    Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+    Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
     session.setAttribute("message", message);
     response.sendRedirect("login.jsp");
     return;
@@ -33,7 +33,7 @@ float packagingFee = fees[1];
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Checkout</title>
+<title>Pago</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 
@@ -86,18 +86,18 @@ float packagingFee = fees[1];
                             <div class="form-check mt-2">
                                 <!-- PAGO CON TARGETA
                                 <input class="form-check-input" type="radio" name="payementMode" value="Card Payment" required>
-                                <label class="form-check-label">Credit /Debit /ATM card</label><br>
+                                <label class="form-check-label">Tarjeta de credito/debito/ATM</label><br>
                                     <div class="mb-3">
-                                        <input class="form-control mt-3" type="number" placeholder="Enter card number" name="cardno">
+                                        <input class="form-control mt-3" type="number" placeholder="Ingresar numero de tarjeta" name="cardno">
                                         <div class="row gx-5">
                                             <div class="col mt-3">
-                                                <input class="form-control" type="number" placeholder="Enter CVV" name="cvv">
+                                                <input class="form-control" type="number" placeholder="Ingresar CVV" name="cvv">
                                             </div>
                                             <div class="col mt-3">
-                                                <input class="form-control" type="text" placeholder="Valid through i.e '07/23'">
+                                                <input class="form-control" type="text" placeholder="Valida hasta, ej. '07/23'">
                                             </div>
                                         </div>
-                                        <input class="form-control mt-3" type="text" placeholder="Enter card holder name" name="name">
+                                        <input class="form-control mt-3" type="text" placeholder="Ingresar nombre del titular" name="name">
                                     </div>
                                 -->
                                 <!-- PAGO DELIVERY -->
@@ -109,7 +109,7 @@ float packagingFee = fees[1];
                                 <!-- PAGO PICKUP
                                 <div>
                                     <input class="form-check-input" type="radio" name="payementMode" value="Cash on Pick Up">
-                                    <label class="form-check-label">Cash on Pick Up</label><br>
+                                    <label class="form-check-label">Efectivo al recoger</label><br>
                                 </div>
                                 -->
 
@@ -181,23 +181,23 @@ float packagingFee = fees[1];
 
                         <table class="table table-borderless">
                             <tr>
-                                <td>Total Item</td>
+	                                <td>Total de productos</td>
                                 <td>1</td>
                             </tr>
                             <tr>
-                                <td>Total Price</td>
+	                                <td>Precio Total</td>
                                 <td>$ <%=price%></td>
                             </tr>
                             <tr>
-                                <td>Delivery Charges</td>
+	                                <td>Envio</td>
                                 <td>$ <%=shippingFee%>></td>
                             </tr>
                             <tr>
-                                <td>Packaging Charges</td>
+	                                <td>Empaquetado</td>
                                 <td>$ <%=packagingFee%></td>
                             </tr>
                             <tr>
-                                <td><h5>Amount Payable :</h5></td>
+	                                <td><h5>Total a pagar :</h5></td>
                                 <td><h5>$ <%=amountPayable%></h5></td>
                             </tr>
                         </table>
@@ -242,7 +242,7 @@ float packagingFee = fees[1];
                         </div>
 
                         <div class="mt-2">
-                            <label class="form-label fw-bold">Zip Code</label>
+	                        <label class="form-label fw-bold">Codigo postal</label>
                             <input class="form-control" type="number" name="zipcode"
                                 placeholder="Codigo Postal" maxlength="6" required>
                         </div>

@@ -24,7 +24,7 @@ public class AdminFeesServlet extends HttpServlet {
 
         String operation = request.getParameter("operation");
         if (operation == null || !operation.equals("updateFees")) {
-            Message msg = new Message("Invalid operation!", "error", "alert-danger");
+            Message msg = new Message("Operacion invalida!", "error", "alert-danger");
             session.setAttribute("message", msg);
             response.sendRedirect("edit_fees.jsp");
             return;
@@ -35,7 +35,7 @@ public class AdminFeesServlet extends HttpServlet {
             float packaging = Float.parseFloat(request.getParameter("packaging_fee"));
 
             if (shipping < 0 || packaging < 0) {
-                Message msg = new Message("Fees cannot be negative!", "error", "alert-danger");
+                Message msg = new Message("Las tarifas no pueden ser negativas!", "error", "alert-danger");
                 session.setAttribute("message", msg);
                 response.sendRedirect("edit_fees.jsp");
                 return;
@@ -45,10 +45,10 @@ public class AdminFeesServlet extends HttpServlet {
             boolean ok = feesDao.updateFees(shipping, packaging);
 
             if (ok) {
-                Message msg = new Message("Fees updated successfully!", "success", "alert-success");
+                Message msg = new Message("Tarifas actualizadas exitosamente!", "success", "alert-success");
                 session.setAttribute("message", msg);
             } else {
-                Message msg = new Message("Failed to update fees!", "error", "alert-danger");
+                Message msg = new Message("No se pudieron actualizar las tarifas!", "error", "alert-danger");
                 session.setAttribute("message", msg);
             }
 
@@ -56,7 +56,7 @@ public class AdminFeesServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Message msg = new Message("Invalid values for fees!", "error", "alert-danger");
+            Message msg = new Message("Valores invalidos para las tarifas!", "error", "alert-danger");
             session.setAttribute("message", msg);
             response.sendRedirect("edit_fees.jsp");
         }

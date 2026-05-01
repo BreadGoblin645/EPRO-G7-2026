@@ -8,7 +8,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -20,7 +20,7 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Product's</title>
+<title>Ver Productos</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -32,13 +32,13 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 		<%@include file="Components/alert_message.jsp"%>
 		<table class="table table-hover">
 			<tr class="table-primary text-center" style="font-size: 20px;">
-				<th>Image</th>
-				<th>Name</th>
-				<th class="text-start">Category</th>
-				<th>Price</th>
-				<th class="text-start">Quantity</th>
-				<th class="text-start">Discount</th>
-				<th>Action</th>
+				<th>Imagen</th>
+				<th>Nombre</th>
+				<th class="text-start">Categoria</th>
+				<th>Precio</th>
+				<th class="text-start">Cantidad</th>
+				<th class="text-start">Descuento</th>
+				<th>Accion</th>
 			</tr>
 			<%
 			List<Product> productList = productDao.getAllProducts();
@@ -53,9 +53,9 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 				<td>$<%=prod.getProductPriceAfterDiscount()%></td>
 				<td><%=prod.getProductQunatity()%></td>
 				<td><%=prod.getProductDiscount()%>%</td>
-				<td><a href="update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Update</a>&emsp;<a
+				<td><a href="update_product.jsp?pid=<%=prod.getProductId()%>" role="button" class="btn btn-secondary">Actualizar</a>&emsp;<a
 					href="AddOperationServlet?pid=<%=prod.getProductId()%>&operation=deleteProduct"
-					class="btn btn-danger" role="button">Delete</a></td>
+					class="btn btn-danger" role="button">Eliminar</a></td>
 			</tr>
 			<%
 			}
@@ -68,4 +68,3 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 	<!-- end -->
 </body>
 </html>
-

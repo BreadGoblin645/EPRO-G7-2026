@@ -10,7 +10,7 @@
 <%
 User activeUser = (User) session.getAttribute("activeUser");
 if (activeUser == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("login.jsp");
 	return;
@@ -20,7 +20,7 @@ if (activeUser == null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Shopping cart</title>
+<title>Carrito de Compras</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style type="text/css">
 .qty {

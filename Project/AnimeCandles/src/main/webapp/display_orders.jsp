@@ -13,7 +13,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -27,7 +27,7 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Order's</title>
+<title>Ver Pedidos</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -43,7 +43,7 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 		<div class="container mt-5 mb-5 text-center">
 			<img src="Images/empty-cart.png" style="max-width: 200px;"
 				class="img-fluid">
-			<h4 class="mt-3">Zero Order found</h4>
+			<h4 class="mt-3">No se encontraron pedidos</h4>
 		</div>
 		<%
 		} else {
@@ -51,14 +51,14 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 		<div class="container-fluid">
 			<table class="table table-hover">
 				<tr class="table-primary" style="font-size: 18px;">
-					<th class="text-center">Product</th>
-					<th>Order ID</th>
-					<th>Product Details</th>
-					<th>Delivery Address</th>
-					<th>Date & Time</th>
-					<th>Payment Type</th>
-					<th>Status</th>
-					<th colspan="2" class="text-center">Action</th>
+					<th class="text-center">Producto</th>
+					<th>ID de Pedido</th>
+					<th>Detalles del Producto</th>
+					<th>Direccion de Entrega</th>
+					<th>Fecha y Hora</th>
+					<th>Tipo de Pago</th>
+					<th>Estado</th>
+					<th colspan="2" class="text-center">Accion</th>
 				</tr>
 				<%
 				for (Order order : orderList) {
@@ -72,28 +72,52 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 						src="Product_imgs\<%=orderProduct.getImage()%>"
 						style="width: 50px; height: 50px; width: auto;"></td>
 					<td><%=order.getOrderId()%></td>
-					<td><%=orderProduct.getName()%><br>Quantity: <%=orderProduct.getQuantity()%><br>Total
-						Price: $<%=orderProduct.getPrice() * orderProduct.getQuantity()%></td>
-					<td><%=userDao.getUserName(order.getUserId())%><br>Mobile No. <%=userDao.getUserPhone(order.getUserId())%><br><%=userDao.getUserAddress(order.getUserId())%></td>
+					<td><%=orderProduct.getName()%><br>Cantidad: <%=orderProduct.getQuantity()%><br>Precio
+						Total: $<%=orderProduct.getPrice() * orderProduct.getQuantity()%></td>
+					<td><%=userDao.getUserName(order.getUserId())%><br>Telefono: <%=userDao.getUserPhone(order.getUserId())%><br><%=userDao.getUserAddress(order.getUserId())%></td>
 					<td><%=order.getDate()%></td>
-					<td><%=order.getPayementType()%></td>
-					<td><%=order.getStatus()%></td>
+					<td><%
+					String paymentType = order.getPayementType();
+					if ("Cash on Delivery".equals(paymentType)) {
+						out.print("Efectivo al momento de entrega");
+					} else if ("Cash on Pick Up".equals(paymentType)) {
+						out.print("Efectivo al recoger");
+					} else if ("Card Payment".equals(paymentType)) {
+						out.print("Pago con tarjeta");
+					} else {
+						out.print(paymentType);
+					}
+					%></td>
+					<td><%
+					String status = order.getStatus();
+					if ("Order Confirmed".equals(status)) {
+						out.print("Pedido Confirmado");
+					} else if ("Shipped".equals(status)) {
+						out.print("Enviado");
+					} else if ("Out For Delivery".equals(status)) {
+						out.print("En Reparto");
+					} else if ("Delivered".equals(status)) {
+						out.print("Entregado");
+					} else {
+						out.print(status);
+					}
+					%></td>
 					<td><select id="operation" name="status" class="form-select">
-							<option>--Select Operation--</option>
-							<option value="Order Confirmed">Order Confirmed</option>
-							<option value="Shipped">Shipped</option>
-							<option value="Out For Delivery">Out For Delivery</option>
-							<option value="Delivered">Delivered</option>
+							<option>--Seleccionar Operacion--</option>
+							<option value="Order Confirmed">Pedido Confirmado</option>
+							<option value="Shipped">Enviado</option>
+							<option value="Out For Delivery">En Reparto</option>
+							<option value="Delivered">Entregado</option>
 					</select></td>
 					<td>
 						<%
 						if (order.getStatus().equals("Delivered")) {
 						%>
-						<button type="submit" class="btn btn-success disabled">Update</button>
+						<button type="submit" class="btn btn-success disabled">Actualizar</button>
 						<%
 						} else {
 						%>
-						<button type="submit" class="btn btn-secondary">Update</button> 
+					<button type="submit" class="btn btn-secondary">Actualizar</button> 
 						<%
 						 }
 						 %>

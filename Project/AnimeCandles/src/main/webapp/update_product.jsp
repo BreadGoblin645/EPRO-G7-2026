@@ -7,7 +7,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -17,7 +17,7 @@ if (activeAdmin == null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Product</title>
+<title>Actualizar Producto</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -35,7 +35,7 @@ if (activeAdmin == null) {
 			<div class="col">
 				<div class="card">
 					<div class="card-header text-center">
-						<h3>Edit Product</h3>
+						<h3>Editar Producto</h3>
 					</div>
 					<form action="AddOperationServlet?pid=<%=pid%>" method="post"
 						name="updateProductForm" enctype="multipart/form-data">
@@ -43,41 +43,41 @@ if (activeAdmin == null) {
 							<input type="hidden" name="operation" value="updateProduct">
 							<div class="row">
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Product Name</b></label> <input
+									<label class="form-label"><b>Nombre del Producto</b></label> <input
 										type="text" name="name" value="<%=product.getProductName()%>"
 										class="form-control">
 								</div>
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Unit Price</b></label> <input
+									<label class="form-label"><b>Precio Unitario</b></label> <input
 										class="form-control" type="number" name="price"
 										value="<%=product.getProductPrice()%>" required>
 								</div>
 							</div>
 							<div class="mb-2">
-								<label class="form-label"><b>Product Description</b></label>
+								<label class="form-label"><b>Descripcion del Producto</b></label>
 								<textarea class="form-control" name="description" rows="3"><%=product.getProductDescription()%></textarea>
 							</div>
 							<div class="row">
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Product Quantity</b></label> <input
+									<label class="form-label"><b>Cantidad del Producto</b></label> <input
 										type="number" name="quantity"
 										value="<%=product.getProductQunatity()%>" class="form-control">
 								</div>
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Discount Percentage</b></label> <input
+									<label class="form-label"><b>Porcentaje de Descuento</b></label> <input
 										type="number" name="discount" onblur="validate()"
 										value="<%=product.getProductDiscount()%>" class="form-control">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Product Image</b></label><input
+									<label class="form-label"><b>Imagen del Producto</b></label><input
 										class="form-control" type="file" name="product_img">
 								</div>
 								<div class="col-md-6 mb-2">
-									<label class="form-label"><b>Select Category Type</b></label> <select
+									<label class="form-label"><b>Seleccionar Categoria</b></label> <select
 										name="categoryType" class="form-control">
-										<option value="0">--Select Category--</option>
+										<option value="0">--Seleccionar Categoria--</option>
 										<%
 										for (Category c : categoryList) {
 										%>
@@ -91,7 +91,7 @@ if (activeAdmin == null) {
 								</div>
 							</div>
 							<div class="mb-3">
-								<label class="form-label"><b>Uploaded Image:&nbsp;</b></label><%=product.getProductImages()%>
+								<label class="form-label"><b>Imagen cargada:&nbsp;</b></label><%=product.getProductImages()%>
 								&emsp;<img src="Product_imgs\<%=product.getProductImages()%>"
 									style="width: 80px; height: 80px; width: auto;"> <input
 									type="hidden" name="image"
@@ -99,7 +99,7 @@ if (activeAdmin == null) {
 							</div>
 						</div>
 						<div class="card-footer text-center">
-							<button type="submit" class="btn btn-lg btn-primary me-3">Update</button>
+							<button type="submit" class="btn btn-lg btn-primary me-3">Actualizar</button>
 						</div>
 					</form>
 				</div>
@@ -112,7 +112,7 @@ if (activeAdmin == null) {
 		function validate() {
 			var dis = document.updateProductForm.discount.value;
 			if (dis > 100 || dis < 0) {
-				alert("Discount need tobe between 0-100 !");
+				alert("El descuento debe estar entre 0 y 100!");
 				return false;
 			}
 		}

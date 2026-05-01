@@ -5,7 +5,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+		Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -15,7 +15,7 @@ if (activeAdmin == null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Page</title>
+<title>Panel de Administrador</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style type="text/css">
 .cus-active {
@@ -53,7 +53,7 @@ a {
 				<img src="Images/admin.png" style="max-width: 180px;"
 					class="img-fluid">
 				<h3>
-					Welcome "<%=activeAdmin.getName()%>"
+					Bienvenido "<%=activeAdmin.getName()%>"
 				</h3>
 			</div>
 		</div>
@@ -66,7 +66,7 @@ a {
 							<div class="card-body">
 								<img src="Images/categories.png" style="max-width: 80px;"
 									class="img-fluid">
-								<h4 class="card-title mt-3">Category</h4>
+								<h4 class="card-title mt-3">Categorias</h4>
 							</div>
 						</div>
 					</a>
@@ -77,7 +77,7 @@ a {
 							<div class="card-body">
 								<img src="Images/products.png" style="max-width: 80px;"
 									class="img-fluid">
-								<h4 class="card-title mt-3">Products</h4>
+								<h4 class="card-title mt-3">Productos</h4>
 							</div>
 						</div>
 					</a>
@@ -88,7 +88,7 @@ a {
 							<div class="card-body">
 								<img src="Images/order.png" style="max-width: 80px;"
 									class="img-fluid">
-								<h4 class="card-title mt-3">Order</h4>
+								<h4 class="card-title mt-3">Pedidos</h4>
 							</div>
 						</div>
 					</a>
@@ -104,7 +104,7 @@ a {
 						<div class="card text-bg-light mb-3 text-center">
 							<div class="card-body">
 								<img src="Images/fees.png" style="max-width: 80px;" class="img-fluid">
-								<h4 class="card-title mt-3">Edit Fees</h4>
+									<h4 class="card-title mt-3">Editar Tarifas</h4>
 							</div>
 						</div>
 					</a>
@@ -115,7 +115,7 @@ a {
 							<div class="card-body">
 								<img src="Images/users.png" style="max-width: 80px;"
 									class="img-fluid">
-								<h4 class="card-title mt-3">User's</h4>
+								<h4 class="card-title mt-3">Usuarios</h4>
 							</div>
 						</div>
 					</a>
@@ -126,7 +126,7 @@ a {
 							<div class="card-body">
 								<img src="Images/add-admin.png" style="max-width: 80px;"
 									class="img-fluid">
-								<h4 class="card-title mt-3">Admin</h4>
+								<h4 class="card-title mt-3">Administradores</h4>
 							</div>
 						</div>
 					</a>
@@ -142,10 +142,10 @@ a {
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="addCategoryModalLabel">Add
-						Category Here</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
+						<h1 class="modal-title fs-5" id="addCategoryModalLabel">Agregar
+							Categoria</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Cerrar"></button>
 				</div>
 				<form action="AddOperationServlet" method="post"
 					enctype="multipart/form-data">
@@ -153,21 +153,21 @@ a {
 						<input type="hidden" name="operation" value="addCategory">
 
 						<div class="mb-3">
-							<label class="form-label"><b>Category Name</b></label> <input
+							<label class="form-label"><b>Nombre de Categoria</b></label> <input
 								type="text" name="category_name"
-								placeholder="Enter category here" class="form-control" required>
+								placeholder="Ingresar categoria" class="form-control" required>
 						</div>
 						<div class="mb-3">
-							<label for="formFile" class="form-label"><b>Category
-									Image</b></label> <input class="form-control" type="file"
+							<label for="formFile" class="form-label"><b>Imagen de
+									Categoria</b></label> <input class="form-control" type="file"
 								name="category_img" id="formFile">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary me-3">Add
-							Category</button>
+							data-bs-dismiss="modal">Cerrar</button>
+						<button type="submit" class="btn btn-primary me-3">Agregar
+							Categoria</button>
 					</div>
 				</form>
 			</div>
@@ -181,47 +181,47 @@ a {
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="addProductModalLabel">Add
-						Product Here</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
+						<h1 class="modal-title fs-5" id="addProductModalLabel">Agregar
+							Producto</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Cerrar"></button>
 				</div>
 				<form action="AddOperationServlet" method="post"
 					name="addProductForm" enctype="multipart/form-data">
 					<div class="modal-body">
 						<input type="hidden" name="operation" value="addProduct">
 						<div>
-							<label class="form-label"><b>Product Name</b></label> <input
-								type="text" name="name" placeholder="Enter product name"
+							<label class="form-label"><b>Nombre del Producto</b></label> <input
+								type="text" name="name" placeholder="Ingresar nombre del producto"
 								class="form-control" required>
 						</div>
 						<div class="mb-2">
-							<label class="form-label"><b>Product Description</b></label>
+							<label class="form-label"><b>Descripcion del Producto</b></label>
 							<textarea class="form-control" name="description" rows="4"
-								placeholder="Enter product description"></textarea>
+								placeholder="Ingresar descripcion del producto"></textarea>
 						</div>
 						<div class="row">
 							<div class="col-md-6 mb-2">
-								<label class="form-label"><b>Unit Price</b></label> <input
-									type="number" name="price" placeholder="Enter price"
+								<label class="form-label"><b>Precio Unitario</b></label> <input
+									type="number" name="price" placeholder="Ingresar precio"
 									class="form-control" required>
 							</div>
 							<div class="col-md-6 mb-2">
-								<label class="form-label"><b>Discount Percentage</b></label> <input
+								<label class="form-label"><b>Porcentaje de Descuento</b></label> <input
 									type="number" name="discount" onblur="validate()"
-									placeholder="Enter discount if any!" class="form-control">
+									placeholder="Ingresar descuento si aplica" class="form-control">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 mb-2">
-								<label class="form-label"><b>Product Quantity</b></label> <input
+								<label class="form-label"><b>Cantidad del Producto</b></label> <input
 									type="number" name="quantity"
-									placeholder="Enter product quantity" class="form-control">
+									placeholder="Ingresar cantidad del producto" class="form-control">
 							</div>
 							<div class="col-md-6 mb-2">
-								<label class="form-label"><b>Select Category Type</b></label> <select
+								<label class="form-label"><b>Seleccionar Categoria</b></label> <select
 									name="categoryType" class="form-control">
-									<option value="0">--Select Category--</option>
+									<option value="0">--Seleccionar Categoria--</option>
 									<%
 									for (Category c : categoryList) {
 									%>
@@ -234,15 +234,15 @@ a {
 							</div>
 						</div>
 						<div class="mb-2">
-							<label class="form-label"><b>Product Image</b></label> <input
+							<label class="form-label"><b>Imagen del Producto</b></label> <input
 								type="file" name="photo" class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary me-3">Add
-							Product</button>
+							data-bs-dismiss="modal">Cerrar</button>
+						<button type="submit" class="btn btn-primary me-3">Agregar
+							Producto</button>
 					</div>
 				</form>
 			</div>
@@ -258,7 +258,7 @@ a {
 		function validate() {
 			var dis = document.addProductForm.discount.value;
 			if (dis > 100 || dis < 0) {
-				alert("Discount need tobe between 0-100 !");
+				alert("El descuento debe estar entre 0 y 100!");
 				//document.addProductForm.discount.focus();
 				return false;
 			}

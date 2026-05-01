@@ -11,7 +11,7 @@
 <%
 User u1 = (User) session.getAttribute("activeUser");
 if (u1 == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("login.jsp");
 	return;  
@@ -27,14 +27,14 @@ ProductDao pDao = new ProductDao(ConnectionProvider.getConnection());
 	<div class="container mt-5 mb-5 text-center">
 		<img src="Images/wishlist.png" style="max-width: 200px;"
 			class="img-fluid">
-		<h4 class="mt-3">Empty Wishlist</h4>
-		You have no items in your wishlist. Start adding!
+		<h4 class="mt-3">Lista de deseos vacia</h4>
+		No tienes productos en tu lista de deseos. Empieza a agregar!
 	</div>
 	<%
 	} else {
 	%>
 	<h4>
-		My Wishlist (<%=wlist.size()%>)
+		Mi Lista de Deseos (<%=wlist.size()%>)
 	</h4>
 	<hr>
 	<div class="container">
@@ -50,7 +50,7 @@ ProductDao pDao = new ProductDao(ConnectionProvider.getConnection());
 				<td>$<%=p.getProductPriceAfterDiscount()%></td>
 				<td><a
 					href="WishlistServlet?uid=<%=u1.getUserId()%>&pid=<%=p.getProductId()%>&op=delete"
-					class="btn btn-secondary" role="button">Remove</a></td>
+					class="btn btn-secondary" role="button">Remover</a></td>
 			</tr>
 			<%
 			}

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>About - AnimeCandles</title>
+<title>Sobre Nosotros - AnimeCandles</title>
 
 <%@ include file="Components/common_css_js.jsp" %>
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create new password</title>
+<title>Crear nueva contrasena</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 label {
@@ -26,22 +26,22 @@ label {
 							<img src="Images/forgot-password.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
-						<h3 class="text-center mt-3">Update Password</h3>
+						<h3 class="text-center mt-3">Actualizar Contrasena</h3>
 						<%@include file="Components/alert_message.jsp"%>
 
 						<form action="ChangePasswordServlet" method="post">
 							<div class="mb-3 mt-3">
-								<label class="form-label">New Password</label> <input
+								<label class="form-label">Nueva contrasena</label> <input
 									type="password" name="password" id="password"
-									placeholder="Enter new password" class="form-control" required>
+									placeholder="Ingresar nueva contrasena" class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Confirm Password</label> <input
+								<label class="form-label">Confirmar contrasena</label> <input
 									type="password" id="confirm_password"
-									placeholder="Confirm password" class="form-control" required>
+									placeholder="Confirmar contrasena" class="form-control" required>
 							</div>
 							<div class="container text-center">
-								<button type="submit" class="btn btn-outline-primary me-3">Submit</button>
+								<button type="submit" class="btn btn-outline-primary me-3">Enviar</button>
 							</div>
 						</form>
 					</div>
@@ -60,7 +60,7 @@ label {
 
 		function validatePassword() {
 			if (password.value != confirm_password.value) {
-				confirm_password.setCustomValidity("Passwords Don't Match");
+				confirm_password.setCustomValidity("Las contrasenas no coinciden");
 			} else {
 				confirm_password.setCustomValidity('');
 			}

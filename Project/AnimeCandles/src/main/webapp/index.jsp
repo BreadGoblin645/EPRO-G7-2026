@@ -13,7 +13,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Inicio</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style type="text/css">
 .cus-card {
@@ -107,12 +107,12 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 		<button class="carousel-control-prev" type="button"
 			data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"
-				style="color: black;"></span> <span class="visually-hidden">Previous</span>
+				style="color: black;"></span> <span class="visually-hidden">Anterior</span>
 		</button>
 		<button class="carousel-control-next" type="button"
 			data-bs-target="#carouselAutoplaying" data-bs-slide="next">
 			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
+				class="visually-hidden">Siguiente</span>
 		</button>
 	</div>
 	<!-- end of carousel -->
@@ -177,7 +177,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 								<% if (latestProduct.getProductDiscount() > 0) { %>
 									<span class="real-price">$<%=latestProduct.getProductPriceAfterDiscount()%></span>&ensp;
 									<span class="product-price"><del>$<%=latestProduct.getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=latestProduct.getProductDiscount()%>&#37; off</span>
+									<span class="product-discount"><%=latestProduct.getProductDiscount()%>&#37; descuento</span>
 								<% } else { %>
 									<span class="real-price">$<%=latestProduct.getProductPrice()%></span>
 								<% } %>
@@ -248,7 +248,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 								<% if (dealProduct.getProductDiscount() > 0) { %>
 									<span class="real-price">$<%=dealProduct.getProductPriceAfterDiscount()%></span>&ensp;
 									<span class="product-price"><del>$<%=dealProduct.getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=dealProduct.getProductDiscount()%>&#37; off</span>
+									<span class="product-discount"><%=dealProduct.getProductDiscount()%>&#37; descuento</span>
 								<% } else { %>
 									<span class="real-price">$<%=dealProduct.getProductPrice()%></span>
 								<% } %>

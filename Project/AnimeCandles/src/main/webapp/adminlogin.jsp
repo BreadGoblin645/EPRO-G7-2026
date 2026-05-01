@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Login</title>
+<title>Inicio de Sesion Administrador</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 label {
@@ -25,7 +25,7 @@ label {
 							<img src="Images/admin.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
-						<h3 class="text-center">Login</h3>
+						<h3 class="text-center">Iniciar Sesion</h3>
 						<%@include file="Components/alert_message.jsp"%>
 					</div>
 					<div class="card-body px-5">
@@ -34,18 +34,18 @@ label {
 							<input type="hidden" name="login" value="admin"> 
 							
 							<div class="mb-3">
-								<label class="form-label">Email</label> <input type="email"
-									name="email" placeholder="Email address" class="form-control"
+								<label class="form-label">Correo</label> <input type="email"
+									name="email" placeholder="Correo electronico" class="form-control"
 									required>
 							</div>
 							<div class="mb-2">
-								<label class="form-label">Password</label> <input
+								<label class="form-label">Contrasena</label> <input
 									type="password" name="password"
-									placeholder="Enter your password" class="form-control" required>
+									placeholder="Ingresa tu contrasena" class="form-control" required>
 							</div>
 
 							<div id="login-btn" class="container text-center mt-5">
-								<button type="submit" class="btn btn-outline-primary me-3">Login</button>
+								<button type="submit" class="btn btn-outline-primary me-3">Iniciar sesion</button>
 							</div>
 						</form>
 					</div>  

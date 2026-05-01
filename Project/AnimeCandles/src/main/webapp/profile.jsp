@@ -4,7 +4,7 @@
 <%
 User activeUser = (User) session.getAttribute("activeUser");
 if (activeUser == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("login.jsp");
 	return;
@@ -19,7 +19,7 @@ if (activeUser == null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>My Profile</title>
+<title>Mi Perfil</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 .cus-active {
@@ -52,7 +52,7 @@ if (activeUser == null) {
 							</div>
 						</div>
 						<div class="col-md-8">
-							Hello, <br>
+							Hola, <br>
 							<h5><%=activeUser.getUserName()%></h5>
 						</div>
 					</div>  
@@ -62,16 +62,16 @@ if (activeUser == null) {
 					<div class="list-group">
 						<button type="button" id="profile-btn"
 							class="list-group-item list-group-item-action cus-active list-btn"
-							aria-current="true">Profile Information</button>
+								aria-current="true">Informacion del perfil</button>
 						<button type="button" id="wishlist-btn"
-							class="list-group-item list-group-item-action list-btn">My Wishlist</button>
+							class="list-group-item list-group-item-action list-btn">Mi lista de deseos</button>
 						<button type="button" id="order-btn"
-							class="list-group-item list-group-item-action list-btn">My Orders</button>
+							class="list-group-item list-group-item-action list-btn">Mis pedidos</button>
 						<button type="button" id="change-password-btn"
-							class="list-group-item list-group-item-action list-btn">Change Password</button>
+							class="list-group-item list-group-item-action list-btn">Cambiar contrasena</button>
 						<button type="button" id="logout-btn"
 							class="list-group-item list-group-item-action list-btn"
-							onclick="window.open('LogoutServlet?user=user', '_self')">Logout</button>
+							onclick="window.open('LogoutServlet?user=user', '_self')">Cerrar sesion</button>
 					</div>
 				</div>
 			</div>

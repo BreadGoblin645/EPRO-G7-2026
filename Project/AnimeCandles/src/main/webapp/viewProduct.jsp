@@ -18,7 +18,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Product</title>
+<title>Ver Producto</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style type="text/css">
 .cus-card {
@@ -114,7 +114,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 					<% if (product.getProductDiscount() > 0) { %>
 						<span class="real-price">$<%=product.getProductPriceAfterDiscount()%></span>&ensp;
 						<span class="product-price"><del>$<%=product.getProductPrice()%></del></span>&ensp;
-						<span class="product-discount"><%=product.getProductDiscount()%>&#37; off</span><br>
+							<span class="product-discount"><%=product.getProductDiscount()%>&#37; descuento</span><br>
 					<% } else { %>
 						<span class="real-price">$<%=product.getProductPrice()%></span><br>
 					<% } %>
@@ -183,7 +183,7 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
 									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
 									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+								<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; descuento</span>
 								<% } else { %>
 									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
 								<% } %>

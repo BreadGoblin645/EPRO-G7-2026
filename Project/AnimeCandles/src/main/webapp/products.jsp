@@ -46,7 +46,7 @@ if (prodList != null && prodList.size() == 0) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Products</title>
+<title>Productos</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 .cus-card {
@@ -178,7 +178,7 @@ if (prodList != null && prodList.size() == 0) {
 								<% if (p.getProductDiscount() > 0) { %>
 									<span class="real-price">$<%=p.getProductPriceAfterDiscount()%></span>&ensp;
 									<span class="product-price"><del>$<%=p.getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=p.getProductDiscount()%>&#37; off</span>
+									<span class="product-discount"><%=p.getProductDiscount()%>&#37; descuento</span>
 								<% } else { %>
 									<span class="real-price">$<%=p.getProductPrice()%></span>
 								<% } %>
@@ -224,7 +224,7 @@ if (prodList != null && prodList.size() == 0) {
 									<% if (topDeals.get(i).getProductDiscount() > 0) { %>
 										<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
 										<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
-										<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+										<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; descuento</span>
 									<% } else { %>
 										<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
 									<% } %>
@@ -263,7 +263,7 @@ if (prodList != null && prodList.size() == 0) {
 								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
 									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
 									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; descuento</span>
 								<% } else { %>
 									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
 								<% } %>
@@ -284,4 +284,3 @@ if (prodList != null && prodList.size() == 0) {
 
 </body>
 </html>
-

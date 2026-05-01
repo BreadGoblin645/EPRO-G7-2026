@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login</title>
+<title>Iniciar sesion</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 label{
@@ -27,31 +27,31 @@ label{
 							<img src="Images/login.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
-						<h3 class="text-center">Sign-In</h3>
+						<h3 class="text-center">Iniciar sesion</h3>
 						<%@include file="Components/alert_message.jsp" %>
 						
 						<!--login-form-->
 						<form id="login-form" action="LoginServlet" method="post">
 							<input type="hidden" name="login" value="user"> 
 							<div class="mb-3">
-								<label class="form-label">Email</label> <input
-									type="email" name="user_email" placeholder="Email address"
+								<label class="form-label">Correo</label> <input
+									type="email" name="user_email" placeholder="Correo electronico"
 									class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Password</label>
+								<label class="form-label">Contrasena</label>
 								<input type="password" name="user_password"
-									placeholder="Enter your password" class="form-control" required>
+									placeholder="Ingresa tu contrasena" class="form-control" required>
 							</div>
 							<div id="login-btn" class="container text-center">
-								<button type="submit" class="btn btn-outline-primary me-3">Login</button>
+								<button type="submit" class="btn btn-outline-primary me-3">Iniciar sesion</button>
 							</div>
 						</form>
 						<div class="mt-3 text-center">
-							<h6><a href="forgot_password.jsp" style="text-decoration: none">Forgot Password?</a></h6>
+							<h6><a href="forgot_password.jsp" style="text-decoration: none">Olvidaste tu contrasena?</a></h6>
 							<h6>
-								Don't have an account?<a href="register.jsp"
-									style="text-decoration: none"> Sign Up</a>
+								No tienes una cuenta?<a href="register.jsp"
+									style="text-decoration: none"> Registrate</a>
 							</h6>
 						</div>
 					</div>  

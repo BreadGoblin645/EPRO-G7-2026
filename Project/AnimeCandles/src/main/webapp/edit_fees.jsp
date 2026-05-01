@@ -8,7 +8,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-    Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+    Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
     session.setAttribute("message", message);
     response.sendRedirect("adminlogin.jsp");
     return;
@@ -24,7 +24,7 @@ float packagingFee = fees[1];
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Edit Fees</title>
+<title>Editar Tarifas</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -36,7 +36,7 @@ float packagingFee = fees[1];
 
   <div class="card">
     <div class="card-header text-white" style="background-color:#389aeb;">
-      <h4 class="mb-0">Edit Checkout Fees</h4>
+      <h4 class="mb-0">Editar Tarifas de Pago</h4>
     </div>
 
     <div class="card-body">
@@ -44,19 +44,19 @@ float packagingFee = fees[1];
         <input type="hidden" name="operation" value="updateFees">
 
         <div class="mb-3">
-          <label class="form-label fw-bold">Shipping Fee</label>
+          <label class="form-label fw-bold">Tarifa de Envio</label>
           <input class="form-control" type="number" step="0.01" min="0"
                  name="shipping_fee" value="<%=shippingFee%>" required>
         </div>
 
         <div class="mb-3">
-          <label class="form-label fw-bold">Packaging Fee</label>
+          <label class="form-label fw-bold">Tarifa de Empaquetado</label>
           <input class="form-control" type="number" step="0.01" min="0"
                  name="packaging_fee" value="<%=packagingFee%>" required>
         </div>
 
-        <button class="btn btn-primary" type="submit">Save</button>
-        <a class="btn btn-outline-secondary ms-2" href="admin.jsp">Back</a>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-outline-secondary ms-2" href="admin.jsp">Volver</a>
       </form>
     </div>
   </div>

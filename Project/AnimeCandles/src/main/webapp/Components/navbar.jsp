@@ -44,7 +44,7 @@ List<Category> categoryList = catDao.getAllCategories();
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
+				aria-label="Alternar navegacion">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -79,7 +79,7 @@ List<Category> categoryList = catDao.getAllCategories();
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
+				aria-label="Alternar navegacion">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -104,7 +104,7 @@ List<Category> categoryList = catDao.getAllCategories();
 			<form class="d-flex pe-5" role="search" action="products.jsp"
 				method="get">
 				<input name="search" class="form-control me-2" size="50"
-					type="search" placeholder="Buscar productos" aria-label="Search"
+					type="search" placeholder="Buscar productos" aria-label="Buscar"
 					style="background-color: white !important;">
 				<button class="btn btn-outline-light" type="submit">Buscar</button>
 			</form>
@@ -119,7 +119,7 @@ List<Category> categoryList = catDao.getAllCategories();
 				<li class="nav-item active pe-3"><a
 					class="nav-link position-relative" aria-current="page"
 					href="cart.jsp"><i class="fa-solid fa-cart-shopping"
-						style="color: #ffffff;"></i> &nbsp;Cart<span
+						style="color: #ffffff;"></i> &nbsp;Carrito<span
 						class="position-absolute top-1 start-0 translate-middle badge rounded-pill bg-danger"><%=cartCount%></span></a></li>
 				<li class="nav-item active pe-3"><a class="nav-link"
 					aria-current="page" href="profile.jsp"><%=user.getUserName()%></a></li>
@@ -139,7 +139,7 @@ List<Category> categoryList = catDao.getAllCategories();
 					aria-current="page" href="login.jsp"><i
 						class="fa-solid fa-user-lock" style="color: #fafafa;"></i>&nbsp;Iniciar</a></li>
 				<li class="nav-item pe-2"><a class="nav-link"
-					aria-current="page" href="adminlogin.jsp">&nbsp;Admin</a></li>
+				aria-current="page" href="adminlogin.jsp">&nbsp;Administrador</a></li>
 			</ul>
 
 		</div>
@@ -150,4 +150,3 @@ List<Category> categoryList = catDao.getAllCategories();
 	%>
 	<!-- end  -->
 </nav>
-

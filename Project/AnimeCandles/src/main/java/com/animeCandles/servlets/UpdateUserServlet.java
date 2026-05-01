@@ -70,7 +70,7 @@ public class UpdateUserServlet extends HttpServlet {
 
 				userDao.updateUser(user);
 				session.setAttribute("activeUser", user);
-				Message message = new Message("User information updated successfully!!", "success", "alert-success");
+				Message message = new Message("Informacion del usuario actualizada exitosamente!!", "success", "alert-success");
 				session.setAttribute("message", message);
 				response.sendRedirect("profile.jsp");
 

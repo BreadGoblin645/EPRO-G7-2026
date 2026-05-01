@@ -5,7 +5,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+		Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -17,7 +17,7 @@ List<Admin> adminList = adminDao.getAllAdmin();
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Admin's</title>
+<title>Ver Administradores</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 label {
@@ -38,33 +38,33 @@ label {
 							<img src="Images/admin.png" style="max-width: 100px;"
 								class="img-fluid">
 						</div>
-						<h3 class="text-center">Add Admin</h3>
+						<h3 class="text-center">Agregar Administrador</h3>
 						<%@include file="Components/alert_message.jsp"%>
 
 						<!--admin-form-->
 						<form action="AdminServlet?operation=save" method="post">
 							<div class="mb-3">
-								<label class="form-label">Name</label> <input type="text"
-									name="name" placeholder="Enter name" class="form-control"
-									required>
+							<label class="form-label">Nombre</label> <input type="text"
+								name="name" placeholder="Ingresar nombre" class="form-control"
+								required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Email</label> <input type="email"
-									name="email" placeholder="Email address" class="form-control"
-									required>
+							<label class="form-label">Correo</label> <input type="email"
+								name="email" placeholder="Correo electronico" class="form-control"
+								required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Password</label> <input
-									type="password" name="password" placeholder="Enter password"
-									class="form-control" required>
+							<label class="form-label">Contrasena</label> <input
+								type="password" name="password" placeholder="Ingresar contrasena"
+								class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Phone</label> <input type="number"
-									name="phone" placeholder="Enter phone number"
-									class="form-control" required>
+							<label class="form-label">Telefono</label> <input type="number"
+								name="phone" placeholder="Ingresar numero de telefono"
+								class="form-control" required>
 							</div>
 							<div class="d-grid gap-2 col-6 mx-auto py-3">
-								<button type="submit" class="btn btn-primary me-3">Register</button>
+								<button type="submit" class="btn btn-primary me-3">Registrar</button>
 							</div>
 						</form>
 					</div>
@@ -76,10 +76,10 @@ label {
 					<div class="card-body px-3">
 						<table class="table table-hover">
 							<tr class="text-center table-primary" style="font-size: 18px;">
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Action</th>
+								<th>Nombre</th>
+								<th>Correo</th>
+								<th>Telefono</th>
+								<th>Accion</th>
 							</tr>
 							<%
 							for (Admin a : adminList) {
@@ -88,7 +88,7 @@ label {
 								<td><%=a.getName() %></td>
 								<td><%=a.getEmail() %></td>
 								<td><%=a.getPhone() %></td>
-								<td><a href="AdminServlet?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Remove</a></td>
+							<td><a href="AdminServlet?operation=delete&id=<%=a.getId()%>" role="button" class="btn btn-danger">Remover</a></td>
 							</tr>
 							<%
 							}

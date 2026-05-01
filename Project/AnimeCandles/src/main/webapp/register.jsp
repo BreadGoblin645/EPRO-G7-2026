@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Registration</title>
+<title>Registro</title>
 <%@include file="Components/common_css_js.jsp"%>
 <style>
 label {
@@ -26,61 +26,61 @@ label {
 							<img src="Images/signUp.png" style="max-width: 80px;"
 								class="img-fluid">
 						</div>
-						<h3 class="text-center">Create Account</h3>
+						<h3 class="text-center">Crear Cuenta</h3>
 						<%@include file="Components/alert_message.jsp"%>
 
 						<!--registration-form-->
 						<form id="register-form" action="RegisterServlet" method="post">
 							<div class="row">
 								<div class="col-md-6 mt-2">
-									<label class="form-label">Your name</label> <input type="text"
+									<label class="form-label">Nombre completo</label> <input type="text"
 										name="user_name" class="form-control"
-										placeholder="First and last name" required>
+										placeholder="Nombre y apellido" required>
 								</div>
 								<div class="col-md-6 mt-2">
-									<label class="form-label">Email</label> <input type="email"
-										name="user_email" placeholder="Email address"
+									<label class="form-label">Correo</label> <input type="email"
+										name="user_email" placeholder="Correo electronico"
 										class="form-control" required>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6 mt-2">
-									<label class="form-label">Mobile number</label> <input
+									<label class="form-label">Numero de telefono</label> <input
 										type="number" name="user_mobile_no"
-										placeholder="Mobile number" class="form-control">
+										placeholder="Numero de telefono" class="form-control">
 								</div>
 								<div class="col-md-6 mt-5">
-									<label class="form-label pe-3">Gender</label> <input
+									<label class="form-label pe-3">Genero</label> <input
 										class="form-check-input" type="radio" name="gender"
 										value="Male"> <span class="form-check-label pe-3 ps-1">
-										Male </span> <input class="form-check-input" type="radio"
+										Masculino </span> <input class="form-check-input" type="radio"
 										name="gender" value="Female"> <span
-										class="form-check-label ps-1"> Female </span>
+										class="form-check-label ps-1"> Femenino </span>
 								</div>
 							</div>
 							<div class="mt-2">
-								<label class="form-label">Address</label> <input type="text"
+								<label class="form-label">Direccion</label> <input type="text"
 									name="user_address"
-									placeholder="Enter Address(Area and Street))"
+									placeholder="Ingresar direccion, zona y calle"
 									class="form-control" required>
 							</div>  
 							<div class="row">
 								<div class="col-md-6 mt-2">
-									<label class="form-label">City</label> <input
-										class="form-control" type="text" name="city"
-										placeholder="City/District/Town" required>
+										<label class="form-label">Ciudad</label> <input
+											class="form-control" type="text" name="city"
+											placeholder="Ciudad, distrito o municipio" required>
 								</div>
 								<div class="col-md-6 mt-2">
-									<label class="form-label">Zipcode</label> <input
-										class="form-control" type="number" name="zipcode"
-										placeholder="Zipcode" maxlength="6" required>
+										<label class="form-label">Codigo postal</label> <input
+											class="form-control" type="number" name="zipcode"
+											placeholder="Codigo postal" maxlength="6" required>
 								</div>  
 							</div>
 							<div class="row">
 								<div class="col-md-6 mt-2">
-									<label class="form-label">State</label> <select name="state"
-										class="form-select">
-										<option selected>--Select State--</option>
+										<label class="form-label">Departamento</label> <select name="state"
+											class="form-select">
+											<option selected>--Seleccionar departamento--</option>
 										<option value="Ahuachapan">Ahuachapan</option>
 										<option value="Cabanas">Cabanas</option>
 										<option value="Chalatenango">Chalatenango</option>
@@ -98,20 +98,20 @@ label {
 									</select>
 								</div>
 								<div class="col-md-6 mt-2">
-									<label class="form-label">Password</label> <input
+									<label class="form-label">Contrasena</label> <input
 										type="password" name="user_password"
-										placeholder="Enter Password" class="form-control" required>
+										placeholder="Ingresar contrasena" class="form-control" required>
 								</div>
 							</div>
 
 							<div id="submit-btn" class="container text-center mt-4">
-								<button type="submit" class="btn btn-outline-primary me-3">Submit</button>
-								<button type="reset" class="btn btn-outline-primary">Reset</button>
+								<button type="submit" class="btn btn-outline-primary me-3">Enviar</button>
+								<button type="reset" class="btn btn-outline-primary">Limpiar</button>
 							</div>
 							<div class="mt-3 text-center">
 								<h6>
-									Already have an account?<a href="login.jsp"
-										style="text-decoration: none"> Sign in</a>
+									Ya tienes una cuenta?<a href="login.jsp"
+										style="text-decoration: none"> Iniciar sesion</a>
 								</h6>
 							</div>
 						</form>

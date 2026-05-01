@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Something went wrong</title>
+<title>Algo salio mal</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
 
 	<div class="container p-5 text-center">
 		<img src="Images\no-results.png" class="img-fluid" style="max-width: 400px;">
-		<h1>Sorry! Something went wrong...</h1>
+		<h1>Lo sentimos! Algo salio mal...</h1>
 		<p><%=exception%></p>
-		<a href="index.jsp" class="btn btn-outline-primary btn-lg mt-3">Home
-			Page</a>
+		<a href="index.jsp" class="btn btn-outline-primary btn-lg mt-3">Pagina
+			Principal</a>
 	</div>
 
 	<!-- Footer -->

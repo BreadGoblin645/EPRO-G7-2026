@@ -6,7 +6,7 @@
 <%
 Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
 if (activeAdmin == null) {
-	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
+	Message message = new Message("No has iniciado sesion! Inicia sesion primero.", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("adminlogin.jsp");
 	return;
@@ -16,7 +16,7 @@ if (activeAdmin == null) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View User's</title>
+<title>Ver Usuarios</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -26,13 +26,13 @@ if (activeAdmin == null) {
 	<div class="container-fluid px-5 py-3">
 		<table class="table table-hover">
 			<tr class="text-center table-primary" style="font-size: 18px;">
-				<th>User Name</th>
-				<th>Email</th>
-				<th>Phone No.</th>
-				<th>Gender</th>
-				<th>Address</th>
-				<th>Register Date</th>
-				<th>Action</th>
+				<th>Nombre de Usuario</th>
+				<th>Correo</th>
+				<th>Telefono</th>
+				<th>Genero</th>
+				<th>Direccion</th>
+				<th>Fecha de Registro</th>
+				<th>Accion</th>
 			</tr>
 			<%
 			UserDao userDao = new UserDao(ConnectionProvider.getConnection());
@@ -43,10 +43,19 @@ if (activeAdmin == null) {
 				<td><%=u.getUserName()%></td>
 				<td><%=u.getUserEmail()%></td>
 				<td><%=u.getUserPhone()%></td>
-				<td><%=u.getUserGender()%></td>
+				<td><%
+				String gender = u.getUserGender();
+				if ("Male".equals(gender)) {
+					out.print("Masculino");
+				} else if ("Female".equals(gender)) {
+					out.print("Femenino");
+				} else {
+					out.print(gender);
+				}
+				%></td>
 				<td><%=userDao.getUserAddress(u.getUserId())%></td>
 				<td><%=u.getDateTime()%></td>
-				<td><a href="UpdateUserServlet?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Remove</a></td>
+				<td><a href="UpdateUserServlet?operation=deleteUser&uid=<%=u.getUserId()%>" role="button" class="btn btn-danger">Remover</a></td>
 			</tr>
 			<%
 			}
