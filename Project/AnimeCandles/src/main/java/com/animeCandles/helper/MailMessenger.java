@@ -4,12 +4,12 @@ public class MailMessenger {
 
 	public static void successfullyRegister(String userName, String userEmail) {
 
-		String subject = "Welcome to animeCandles - Successful Registration!";
-		String body = "Hi " + userName
-				+ ",<p>Congratulations and a warm welcome to animeCandles! We are thrilled to have you as a part of our growing community. Thank you for choosing us for your online shopping needs.</p>"
-				+ "<p>Your registration was successful, and we are excited to inform you that you are now a valued member of our platform. With animeCandles, you'll discover a wide selection of products and exciting deals that cater to your interests and preferences."
-				+ "<p>Once again, welcome aboard! We look forward to serving you and making your shopping experience delightful and rewarding.</p>"
-				+ "<p>Happy shopping!</p>";
+		String subject = "Bienvenido a animeCandles - Registro exitoso";
+		String body = "Hola " + userName
+				+ ",<p>¡Felicidades y bienvenido a animeCandles! Nos alegra tenerte como parte de nuestra comunidad. Gracias por elegirnos para tus compras en línea.</p>"
+				+ "<p>Tu registro se completó exitosamente. Ahora formas parte de nuestra plataforma, donde podrás encontrar una variedad de productos y ofertas pensadas para tus gustos e intereses.</p>"
+				+ "<p>Una vez más, ¡bienvenido! Esperamos brindarte una experiencia de compra agradable y satisfactoria.</p>"
+				+ "<p>¡Felices compras!</p>";
 		try {
 			Mail.sendMail(userEmail, subject, body);
 		} catch (Exception e) {
@@ -18,13 +18,13 @@ public class MailMessenger {
 	}
 
 	public static void successfullyOrderPlaced(String userName, String userEmail, String orderId, String OrderDate) {
-		String subject = "Order Confirmation - Your Product is on its way!";
-		String body = "Hi " + userName
-				+ ",<p>We are delighted to inform you that your order has been successfully placed and is now being processed. Thank you for choosing animeCandles for your shopping needs!</p>"
-				+ "<p>Order Details: <br>" + "Order Number: " + orderId + "<br>Order Date: " + OrderDate + "</p>"
-				+ "<p>Please note that your order is currently being prepared for shipment. Our dedicated team is working diligently to ensure that your products are packed securely and dispatched at the earliest.</p>"
-				+ "<p>Once your order is shipped, we will send you another email containing the tracking details, allowing you to monitor its journey until it reaches your doorstep. We understand how exciting it is to receive a package, and we'll do our best to get it to you as soon as possible.</p>"
-				+ "<p>Thank you for shopping with us! Your trust in <b>animeCandles</b> means a lot to us, and we promise to provide you with an exceptional shopping experience.</p>";
+		String subject = "Confirmación de pedido - Tu producto está en camino";
+		String body = "Hola " + userName
+				+ ",<p>Nos alegra informarte que tu pedido fue realizado exitosamente y ahora está siendo procesado. ¡Gracias por elegir animeCandles para tus compras!</p>"
+				+ "<p>Detalles del pedido: <br>" + "Número de pedido: " + orderId + "<br>Fecha del pedido: " + OrderDate + "</p>"
+				+ "<p>Tu pedido está siendo preparado para su envío. Nuestro equipo está trabajando para empacar tus productos de forma segura y despacharlos lo antes posible.</p>"
+				+ "<p>Cuando tu pedido sea enviado, recibirás otro correo con los detalles de seguimiento para que puedas monitorear su recorrido hasta llegar a tu dirección.</p>"
+				+ "<p>¡Gracias por comprar con nosotros! Tu confianza en <b>animeCandles</b> significa mucho para nosotros, y esperamos brindarte una excelente experiencia de compra.</p>";
 		try {
 			Mail.sendMail(userEmail, subject, body);
 		} catch (Exception e) {
@@ -33,13 +33,13 @@ public class MailMessenger {
 	}
 
 	public static void orderShipped(String userName, String userEmail, String orderId, String OrderDate) {
-		String subject = "Your Order is Out for Delivery!";
-		String body = "Hi " + userName
-				+ "<p>Greetings from <b>animeCandles</b>! We are thrilled to inform you that your order is on its way to you. Your package has been successfully shipped and will soon be at your doorstep!</p>"
-				+ "<p>Order Details: <br>" + "Order Number: " + orderId + "<br>Order Date: " + OrderDate + "</p>"
-				+ "<p>Our dedicated team has carefully processed and packed your order to ensure that it reaches you in perfect condition. As it is out for delivery, our trusted delivery partner is committed to bringing your package to you as swiftly as possible.</p>"
-				+ "<p>Once again, we appreciate your trust in <b>animeCandles</b> for your shopping needs. We aim to provide you with an outstanding shopping experience, and your satisfaction is our priority.</p>"
-				+ "<p>Thank you for choosing us!</p>";
+		String subject = "Tu pedido está en camino";
+		String body = "Hola " + userName
+				+ ",<p>¡Saludos de <b>animeCandles</b>! Te informamos que tu pedido ya está en camino. Tu paquete ha sido enviado y pronto llegará a tu dirección.</p>"
+				+ "<p>Detalles del pedido: <br>" + "Número de pedido: " + orderId + "<br>Fecha del pedido: " + OrderDate + "</p>"
+				+ "<p>Nuestro equipo ha procesado y empacado cuidadosamente tu pedido para asegurar que llegue en buenas condiciones. Nuestro servicio de entrega trabajará para llevar tu paquete lo antes posible.</p>"
+				+ "<p>Una vez más, agradecemos tu confianza en <b>animeCandles</b>. Nuestro objetivo es brindarte una experiencia de compra satisfactoria.</p>"
+				+ "<p>¡Gracias por elegirnos!</p>";
 		try {
 			Mail.sendMail(userEmail, subject, body);
 		} catch (Exception e) {
@@ -48,9 +48,10 @@ public class MailMessenger {
 	}
 
 	public static void sendOtp(String userEmail, int code) {
-		String subject = "Verification code for password change";
-		String body = "Hi, " + "<p>Please use the below verification code to reset your password!</p>" + "<h3>" + code
-				+ "</h3>";
+		String subject = "Código de verificación para cambio de contraseña";
+		String body = "Hola, "
+				+ "<p>Por favor utiliza el siguiente código de verificación para restablecer tu contraseña:</p>"
+				+ "<h3>" + code + "</h3>";
 		try {
 			Mail.sendMail(userEmail, subject, body);
 		} catch (Exception e) {

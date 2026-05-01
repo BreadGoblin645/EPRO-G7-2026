@@ -1,0 +1,10 @@
+
+
+# RENOMBRAR ESTE ARCHIVO A:
+
+#  mail.properties
+
+# Ingresar informacion real, correo electronico y contrasena de 16 caracteres de la aplicacion
+
+mail.email=correo-electronico@gmail.com
+mail.password=App_password_de_16_caracteres
