@@ -1,10 +1,5 @@
 package com.animeCandles.servlets;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 import com.animeCandles.dao.AdminDao;
@@ -13,6 +8,12 @@ import com.animeCandles.entities.Admin;
 import com.animeCandles.entities.Message;
 import com.animeCandles.entities.User;
 import com.animeCandles.helper.ConnectionProvider;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("activeUser", user);
 					response.sendRedirect("index.jsp");
 				} else {
-					Message message = new Message("Invalid details! Try again!!", "error", "alert-danger");
+					Message message = new Message("Información inválida! Intenalo de nuevo!!", "error", "alert-danger");
 					session.setAttribute("message", message);
 					response.sendRedirect("login.jsp");
 					return;
@@ -52,13 +53,13 @@ public class LoginServlet extends HttpServlet {
 
 				AdminDao adminDao = new AdminDao(ConnectionProvider.getConnection());
 				Admin admin = adminDao.getAdminByEmailPassword(userName, password);
-				
+
 				HttpSession session = request.getSession();
 				if (admin != null) {
 					session.setAttribute("activeAdmin", admin);
 					response.sendRedirect("admin.jsp");
 				} else {
-					Message message = new Message("Invalid details! Try again!!", "error", "alert-danger");
+					Message message = new Message("Información inválida! Intentalo de nuevi!!", "error", "alert-danger");
 					session.setAttribute("message", message);
 					response.sendRedirect("adminlogin.jsp");
 					return;

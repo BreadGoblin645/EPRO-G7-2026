@@ -13,7 +13,7 @@ if (activeUser == null) {
 	Message message = new Message("You are not logged in! Login first!!", "error", "alert-danger");
 	session.setAttribute("message", message);
 	response.sendRedirect("login.jsp");
-	return;  
+	return;
 }
 %>
 <!DOCTYPE html>
@@ -48,34 +48,34 @@ if (activeUser == null) {
 	<div class="container text-center py-5 px-5">
 		<img src="Images/empty-cart.png" style="max-width: 250px;"
 			class="img-fluid">
-		<h4 class="mt-5">Your cart is empty!</h4>
-		<p>Add items to it now.</p>
+		<h4 class="mt-5">Carrito de compras vacio!</h4>
+		<p>Agregar productos.</p>
 		<a href="products.jsp" class="btn btn-primary btn-lg" role="button"
-			aria-disabled="true">Shop Now</a>
+			aria-disabled="true">Productos</a>
 	</div>
 	<%
 	} else {
 	%>
-	
+
 	<div class="container mt-5">
 		<%@include file="Components/alert_message.jsp"%>
 		<div class="card px-3 py-3">
 			<table class="table table-hover">
 				<thead>
 					<tr class="table-primary text-center" style="font-size: 18px;">
-						<th>Item</th>
-						<th>Item Name</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Total price</th>
-						<th>Remove</th>
+						<th>Productos</th>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Precio Total</th>
+						<th>Remover</th>
 					</tr>
 				</thead>
 				<tbody>
 					<%
 					ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 					for (Cart c : listOfCart) {
-						Product prod = productDao.getProductsByProductId(c.getProductId());						
+						Product prod = productDao.getProductsByProductId(c.getProductId());
 					%>
 					<tr class="text-center">
 						<td><img src="Product_imgs\<%=prod.getProductImages()%>"
@@ -105,7 +105,7 @@ if (activeUser == null) {
 						<td>$<%=c.getQuantity() * prod.getProductPriceAfterDiscount()%></td>
 						<td><a
 							href="CartOperationServlet?cid=<%=c.getCartId()%>&opt=3"
-							class="btn btn-secondary" role="button">Remove</a></td>
+							class="btn btn-secondary" role="button">Remover</a></td>
 					</tr>
 					<%
 					totalPrice += c.getQuantity() * prod.getProductPriceAfterDiscount();
@@ -113,16 +113,16 @@ if (activeUser == null) {
 					%>
 					<tr>
 						<td class="text-end" colspan="8"><h4 class='pe-5'>
-								Total Amount : $
+								Total a pagar : $
 								<%=totalPrice%></h4></td>
 					</tr>
 				</tbody>
 			</table>
 			<div class="text-end">
 				<a href="products.jsp" class="btn btn-outline-primary" role="button"
-					aria-disabled="true">Continue Shopping</a>&nbsp; 
+					aria-disabled="true">Continuar Comprando</a>&nbsp;
 					<a href="checkout.jsp" id="checkout-btn"
-					class="btn btn-outline-primary" role="button" aria-disabled="true">Checkout</a>
+					class="btn btn-outline-primary" role="button" aria-disabled="true">Pagar</a>
 			</div>
 
 		</div>
@@ -131,7 +131,7 @@ if (activeUser == null) {
 	<!-- Footer -->
     <%@ include file="Components/footer.jsp" %>
 	<!--End Footer-->
-	
+
 	<%
 	}
 	%>
@@ -141,10 +141,10 @@ if (activeUser == null) {
 			<%
 			session.setAttribute("totalPrice", totalPrice);
 			session.setAttribute("from", "cart");
-			%>	
+			%>
 			});
 		});
 	</script>
-	
+
 </body>
 </html>

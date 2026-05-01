@@ -57,9 +57,9 @@ public class AddOperationServlet extends HttpServlet {
 			}
 
 			if (flag) {
-				message = new Message("Category added successfully!!", "success", "alert-success");
+				message = new Message("Categoria agregada exitosamente!!", "success", "alert-success");
 			} else {
-				message = new Message("Something went wrong! Try again!!", "error", "alert-danger");
+				message = new Message("Error, intentalo de nuevo!!", "error", "alert-danger");
 			}
 			session.setAttribute("message", message);
 			response.sendRedirect("admin.jsp");
@@ -97,13 +97,13 @@ public class AddOperationServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (flag) {
-				message = new Message("Product added successfully!!", "success", "alert-success");
+				message = new Message("Producto agregado exitosamente!!", "success", "alert-success");
 			} else {
-				message = new Message("Something went wrong! Try again!!", "error", "alert-danger");
+				message = new Message("Error! intentalo de nuevo!!", "error", "alert-danger");
 			}
 			session.setAttribute("message", message);
 			response.sendRedirect("admin.jsp");
-			
+
 		} else if (operation.trim().equals("updateCategory")) {
 
 			int cid = Integer.parseInt(request.getParameter("cid"));
@@ -131,10 +131,10 @@ public class AddOperationServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			message = new Message("Category updated successfully!!", "success", "alert-success");
+			message = new Message("Categoria actualizada exitosamente!!", "success", "alert-success");
 			session.setAttribute("message", message);
 			response.sendRedirect("display_category.jsp");
-			
+
 		} else if (operation.trim().equals("deleteCategory")) {
 
 			int cid = Integer.parseInt(request.getParameter("cid"));
@@ -182,7 +182,7 @@ public class AddOperationServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			message = new Message("Product updated successfully!!", "success", "alert-success");
+			message = new Message("Producto actualizado exitosamente!!", "success", "alert-success");
 			session.setAttribute("message", message);
 			response.sendRedirect("display_products.jsp");
 

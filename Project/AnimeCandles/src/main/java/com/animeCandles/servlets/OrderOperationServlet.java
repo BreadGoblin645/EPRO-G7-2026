@@ -60,7 +60,7 @@ public class OrderOperationServlet extends HttpServlet {
 				}
 				session.removeAttribute("from");
 				session.removeAttribute("totalPrice");
-				
+
 				//removing all product from cart after successful order
 				cartDao.removeAllProduct();
 
@@ -86,10 +86,10 @@ public class OrderOperationServlet extends HttpServlet {
 
 				OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id);
 				orderedProductDao.insertOrderedProduct(orderedProduct);
-				
+
 				//updating(decreasing) quantity of product in database
 				productDao.updateQuantity(pid, productDao.getProductQuantityById(pid) - 1);
-				
+
 				session.removeAttribute("from");
 				session.removeAttribute("pid");
 			} catch (Exception e) {

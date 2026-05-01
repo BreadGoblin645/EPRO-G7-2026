@@ -57,6 +57,9 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 <body>
 	<!--navbar -->
 	<%@include file="Components/navbar.jsp"%>
+	<%
+	WishlistDao wishlistDao = new WishlistDao(ConnectionProvider.getConnection());
+	%>
 
 	<!-- Category list -->
 	<div class="container-fluid px-3 py-3"
@@ -125,32 +128,63 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 			</div>
 			<%
 			for (int i = 0; i < Math.min(7, productList.size()); i++) {
+				Product latestProduct = productList.get(i);
 			%>
 			<div class="col">
-				<a href="viewProduct.jsp?pid=<%=productList.get(i).getProductId()%>"
-					style="text-decoration: none;">
-					<div class="card h-100">
+				<div class="card h-100 position-relative">
+					<div class="wishlist-icon">
+						<%
+						if (user != null) {
+							if (wishlistDao.getWishlist(user.getUserId(), latestProduct.getProductId())) {
+						%>
+						<button
+							onclick="event.stopPropagation(); window.open('WishlistServlet?uid=<%=user.getUserId()%>&pid=<%=latestProduct.getProductId()%>&op=remove', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #ff0303;"></i>
+						</button>
+						<%
+							} else {
+						%>
+						<button
+							onclick="event.stopPropagation(); window.open('WishlistServlet?uid=<%=user.getUserId()%>&pid=<%=latestProduct.getProductId()%>&op=add', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
+						</button>
+						<%
+							}
+						} else {
+						%>
+						<button onclick="event.stopPropagation(); window.open('login.jsp', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
+						</button>
+						<%
+						}
+						%>
+					</div>
+					<a href="viewProduct.jsp?pid=<%=latestProduct.getProductId()%>"
+						style="text-decoration: none;">
 						<div class="container text-center">
 							<img
-								src="Product_imgs\<%=productList.get(i).getProductImages()%>"
+								src="Product_imgs\<%=latestProduct.getProductImages()%>"
 								class="card-img-top m-2"
 								style="max-width: 100%; max-height: 200px; width: auto;">
 						</div>
 						<div class="card-body">
-							<h5 class="card-title text-center"><%=productList.get(i).getProductName()%></h5>
+							<h5 class="card-title text-center"><%=latestProduct.getProductName()%></h5>
 
 							<div class="container text-center">
-								<% if (productList.get(i).getProductDiscount() > 0) { %>
-									<span class="real-price">$<%=productList.get(i).getProductPriceAfterDiscount()%></span>&ensp;
-									<span class="product-price"><del>$<%=productList.get(i).getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=productList.get(i).getProductDiscount()%>&#37; off</span>
+								<% if (latestProduct.getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=latestProduct.getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=latestProduct.getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=latestProduct.getProductDiscount()%>&#37; off</span>
 								<% } else { %>
-									<span class="real-price">$<%=productList.get(i).getProductPrice()%></span>
+									<span class="real-price">$<%=latestProduct.getProductPrice()%></span>
 								<% } %>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 			</div>
 
 			<%
@@ -166,31 +200,62 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 		<div class="row row-cols-1 row-cols-md-4 g-3">
 			<%
 			for (int i = 0; i < Math.min(4, topDeals.size()); i++) {
+				Product dealProduct = topDeals.get(i);
 			%>
 			<div class="col">
-				<a href="viewProduct.jsp?pid=<%=topDeals.get(i).getProductId()%>"
-					style="text-decoration: none;">
-					<div class="card h-100">
+				<div class="card h-100 position-relative">
+					<div class="wishlist-icon">
+						<%
+						if (user != null) {
+							if (wishlistDao.getWishlist(user.getUserId(), dealProduct.getProductId())) {
+						%>
+						<button
+							onclick="event.stopPropagation(); window.open('WishlistServlet?uid=<%=user.getUserId()%>&pid=<%=dealProduct.getProductId()%>&op=remove', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #ff0303;"></i>
+						</button>
+						<%
+							} else {
+						%>
+						<button
+							onclick="event.stopPropagation(); window.open('WishlistServlet?uid=<%=user.getUserId()%>&pid=<%=dealProduct.getProductId()%>&op=add', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
+						</button>
+						<%
+							}
+						} else {
+						%>
+						<button onclick="event.stopPropagation(); window.open('login.jsp', '_self')"
+							class="btn btn-link" type="button">
+							<i class="fa-sharp fa-solid fa-heart" style="color: #909191;"></i>
+						</button>
+						<%
+						}
+						%>
+					</div>
+					<a href="viewProduct.jsp?pid=<%=dealProduct.getProductId()%>"
+						style="text-decoration: none;">
 						<div class="container text-center">
-							<img src="Product_imgs\<%=topDeals.get(i).getProductImages()%>"
+							<img src="Product_imgs\<%=dealProduct.getProductImages()%>"
 								class="card-img-top m-2"
 								style="max-width: 100%; max-height: 200px; width: auto;">
 						</div>
 						<div class="card-body">
-							<h5 class="card-title text-center"><%=topDeals.get(i).getProductName()%></h5>
+							<h5 class="card-title text-center"><%=dealProduct.getProductName()%></h5>
 
 							<div class="container text-center">
-								<% if (topDeals.get(i).getProductDiscount() > 0) { %>
-									<span class="real-price">$<%=topDeals.get(i).getProductPriceAfterDiscount()%></span>&ensp;
-									<span class="product-price"><del>$<%=topDeals.get(i).getProductPrice()%></del></span>&ensp;
-									<span class="product-discount"><%=topDeals.get(i).getProductDiscount()%>&#37; off</span>
+								<% if (dealProduct.getProductDiscount() > 0) { %>
+									<span class="real-price">$<%=dealProduct.getProductPriceAfterDiscount()%></span>&ensp;
+									<span class="product-price"><del>$<%=dealProduct.getProductPrice()%></del></span>&ensp;
+									<span class="product-discount"><%=dealProduct.getProductDiscount()%>&#37; off</span>
 								<% } else { %>
-									<span class="real-price">$<%=topDeals.get(i).getProductPrice()%></span>
+									<span class="real-price">$<%=dealProduct.getProductPrice()%></span>
 								<% } %>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 			</div>
 			<%
 			}
@@ -205,11 +270,10 @@ List<Product> topDeals = productDao.getDiscountedProducts();
 	if (order != null) {
 	%>
 	<script type="text/javascript">
-		console.log("testing..4...");
 		Swal.fire({
 		  icon : 'success',
-		  title: 'Order Placed, Thank you!',
-		  text: 'Confirmation will be sent to <%=user.getUserEmail()%>',
+		  title: 'Pedido realizado, Gracias!',
+		  text: 'La confirmacion sera enviada a <%=user.getUserEmail()%>',
 		  width: 600,
 		  padding: '3em',
 		  showConfirmButton : false,

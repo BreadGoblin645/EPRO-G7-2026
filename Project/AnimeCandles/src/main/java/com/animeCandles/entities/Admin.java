@@ -6,7 +6,7 @@ public class Admin {
 	private String email;
 	private String phone;
 	private String password;
-	
+
 	public Admin() {
 		super();
 	}
@@ -58,6 +58,4 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

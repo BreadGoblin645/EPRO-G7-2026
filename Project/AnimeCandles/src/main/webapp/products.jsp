@@ -23,7 +23,7 @@ if (searchKey != null) {
 	if (!searchKey.isEmpty()) {
 		message = "Resultados \"" + searchKey + "\"";
 	} else {
-		message = "No se ingresó un criterio de búsqueda";
+		message = "No se ingreso un criterio de busqueda";
 	}
 	prodList = productDao.getAllProductsBySearchKey(searchKey);
 

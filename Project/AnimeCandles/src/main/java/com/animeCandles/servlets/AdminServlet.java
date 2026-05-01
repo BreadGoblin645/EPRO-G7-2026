@@ -1,16 +1,17 @@
 package com.animeCandles.servlets;
 
+import java.io.IOException;
+
+import com.animeCandles.dao.AdminDao;
+import com.animeCandles.entities.Admin;
+import com.animeCandles.entities.Message;
+import com.animeCandles.helper.ConnectionProvider;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import java.io.IOException;
-import com.animeCandles.dao.AdminDao;
-import com.animeCandles.entities.Admin;
-import com.animeCandles.entities.Message;
-import com.animeCandles.helper.ConnectionProvider;
 
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,9 +34,9 @@ public class AdminServlet extends HttpServlet {
 			boolean flag = adminDao.saveAdmin(admin);
 
 			if(flag) {
-				message = new Message("New admin register successfully!", "success", "alert-success");
+				message = new Message("Nuevo Administrador registrado exitosamente!", "success", "alert-success");
 			}else {
-				message = new Message("Sorry! Something went wrong", "error", "alert-danger");
+				message = new Message("Lo siento! Algo ocurrio mal", "error", "alert-danger");
 			}
 
 		}else if(operation.trim().equals("delete")) {
@@ -43,9 +44,9 @@ public class AdminServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			boolean flag = adminDao.deleteAdmin(id);
 			if(flag) {
-				message = new Message("Admin deleted successfully!", "success", "alert-success");
+				message = new Message("Administrador removido exitosamente!", "success", "alert-success");
 			}else {
-				message = new Message("Sorry! Something went wrong", "error", "alert-danger");
+				message = new Message("Lo siento! Algo ocurrio mal", "error", "alert-danger");
 			}
 		}
 		session.setAttribute("message", message);

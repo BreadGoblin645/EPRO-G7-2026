@@ -22,7 +22,7 @@ if (from == null) {
     from = "cart"; // fallback por si acaso
 }
 
-// Traer fees actuales desde DB
+// Trae fees actuales desde DB
 FeesDao feesDao = new FeesDao(ConnectionProvider.getConnection());
 float[] fees = feesDao.getFees();
 float shippingFee = fees[0];
@@ -50,7 +50,7 @@ float packagingFee = fees[1];
                     <div class="container px-3 py-3">
                         <div class="card">
                             <div class="container-fluid text-white" style="background-color: #389aeb;">
-                                <h4>Delivery Address</h4>
+                                <h4>Direccion de entrega</h4>
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@ float packagingFee = fees[1];
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Change Address
+                                    Cambiar Direccion
                                 </button>
                             </div>
                         </div>
@@ -78,13 +78,13 @@ float packagingFee = fees[1];
 
                         <div class="card">
                             <div class="container-fluid text-white" style="background-color: #389aeb;">
-                                <h4>Payment Options</h4>
+                                <h4>Metodo de pago</h4>
                             </div>
                         </div>
 
                         <form action="OrderOperationServlet" method="post">
                             <div class="form-check mt-2">
-                                <!-- PAGO CON TARGETA 
+                                <!-- PAGO CON TARGETA
                                 <input class="form-check-input" type="radio" name="payementMode" value="Card Payment" required>
                                 <label class="form-check-label">Credit /Debit /ATM card</label><br>
                                     <div class="mb-3">
@@ -100,22 +100,22 @@ float packagingFee = fees[1];
                                         <input class="form-control mt-3" type="text" placeholder="Enter card holder name" name="name">
                                     </div>
                                 -->
-                                <!-- PAGO DELIVERY -->    
+                                <!-- PAGO DELIVERY -->
                                 <div>
                                     <input class="form-check-input" type="radio" name="payementMode" value="Cash on Delivery" checked>
-                                    <label class="form-check-label">Cash on Delivery</label><br><br><br>
+                                    <label class="form-check-label">Efectivo al momento de entrega</label><br><br><br>
                                 </div>
 
-                                <!-- PAGO PICKUP 
+                                <!-- PAGO PICKUP
                                 <div>
                                     <input class="form-check-input" type="radio" name="payementMode" value="Cash on Pick Up">
                                     <label class="form-check-label">Cash on Pick Up</label><br>
                                 </div>
-                                -->  
-                                
+                                -->
+
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-lg btn-outline-primary mt-3">
-                                        Place Order
+                                        Ordenar
                                     </button>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ float packagingFee = fees[1];
             <div class="col-md-4">
                 <div class="card">
                     <div class="container px-3 py-3">
-                        <h4>Price Details</h4>
+                        <h4>Detalles de la orden</h4>
                         <hr>
 
                         <%
@@ -137,9 +137,8 @@ float packagingFee = fees[1];
                             CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
                             int totalProduct = cartDao.getCartCountByUserId(activeUser.getUserId());
 
-                            // OJO: sigue viniendo de session, pero al menos fees ya son dinámicos.
-                            // Recomendación futura: recalcular total del carrito desde DB.
                             float totalPrice = 0f;
+
                             Object tp = session.getAttribute("totalPrice");
                             if (tp != null) {
                                 totalPrice = (float) tp;
@@ -150,23 +149,23 @@ float packagingFee = fees[1];
 
                         <table class="table table-borderless">
                             <tr>
-                                <td>Total Item</td>
+                                <td>Cantidad de productos :</td>
                                 <td><%=totalProduct%></td>
                             </tr>
                             <tr>
-                                <td>Total Price</td>
+                                <td>Precio Total :</td>
                                 <td>$ <%=totalPrice%></td>
                             </tr>
                             <tr>
-                                <td>Delivery Charges</td>
+                                <td>Envio :</td>
                                 <td>$ <%=shippingFee%></td>
                             </tr>
                             <tr>
-                                <td>Packaging Charges</td>
+                                <td>Empaquetado :</td>
                                 <td>$ <%=packagingFee%></td>
                             </tr>
                             <tr>
-                                <td><h5>Amount Payable :</h5></td>
+                                <td><h5>Total a pagar :</h5></td>
                                 <td><h5>$ <%=amountPayable%></h5></td>
                             </tr>
                         </table>
@@ -220,9 +219,9 @@ float packagingFee = fees[1];
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Address</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar direccion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                        aria-label="Cerrar"></button>
                 </div>
 
                 <form action="UpdateUserServlet" method="post">
@@ -230,28 +229,28 @@ float packagingFee = fees[1];
                     <div class="modal-body mx-3">
 
                         <div class="mt-2">
-                            <label class="form-label fw-bold">Address</label>
+                            <label class="form-label fw-bold">Direccion</label>
                             <textarea name="user_address" rows="3"
-                                placeholder="Enter Address(Area and Street))"
+                                placeholder="Ingresar direccion"
                                 class="form-control" required></textarea>
                         </div>
 
                         <div class="mt-2">
-                            <label class="form-label fw-bold">City</label>
+                            <label class="form-label fw-bold">Ciudad</label>
                             <input class="form-control" type="text" name="city"
-                                placeholder="City/District/Town" required>
+                                placeholder="Ciudad" required>
                         </div>
 
                         <div class="mt-2">
                             <label class="form-label fw-bold">Zip Code</label>
                             <input class="form-control" type="number" name="zipcode"
-                                placeholder="Zip Code" maxlength="6" required>
+                                placeholder="Codigo Postal" maxlength="6" required>
                         </div>
 
                         <div class="mt-2">
-                            <label class="form-label fw-bold">State</label>
+                            <label class="form-label fw-bold">Departamento</label>
                             <select name="state" class="form-select">
-                                <option selected>--Select State--</option>
+                                <option selected>- - Seleccionar - -</option>
                                 <option value="Ahuachapan">Ahuachapan</option>
                                 <option value="Cabanas">Cabanas</option>
                                 <option value="Chalatenango">Chalatenango</option>
@@ -273,8 +272,8 @@ float packagingFee = fees[1];
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
 

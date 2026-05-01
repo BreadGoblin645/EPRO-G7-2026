@@ -37,11 +37,11 @@ public class ChangePasswordServlet extends HttpServlet {
 				session.setAttribute("email", email);
 				MailMessenger.sendOtp(email, otp);
 				
-				Message message = new Message("We'ev sent a password reset code to "+email, "success", "alert-success");
+				Message message = new Message("Hemos enviado un codigo para restablecer su contrasena a: "+email, " exitosamente", "alert-success");
 				session.setAttribute("message", message);
 				response.sendRedirect("otp_code.jsp");
 			}else {
-				Message message = new Message("Email not found! Try with another email!", "error", "alert-danger");
+				Message message = new Message("Email no encontrado! Intenta con otro correo!", "error", "alert-danger");
 				session.setAttribute("message", message);
 				response.sendRedirect("forgot_password.jsp");
 				return;
@@ -53,7 +53,7 @@ public class ChangePasswordServlet extends HttpServlet {
 				session.removeAttribute("otp");
 				response.sendRedirect("change_password.jsp");
 			}else {
-				Message message = new Message("Invalid verification code entered!", "error", "alert-danger");
+				Message message = new Message("Codigo de verificacion incorrecto!", "error", "alert-danger");
 				session.setAttribute("message", message);
 				response.sendRedirect("otp_code.jsp");
 				return;
@@ -75,11 +75,11 @@ public class ChangePasswordServlet extends HttpServlet {
 				if(session.getAttribute("email") != null) {
 					session.removeAttribute("email");
 
-					Message message = new Message("Password updated successfully!", "success", "alert-success");
+					Message message = new Message("Contrasena actualizada exitosamente!", "success", "alert-success");
 					session.setAttribute("message", message);
 					response.sendRedirect("login.jsp");
 				} else {
-					Message message = new Message("Password updated successfully!", "success", "alert-success");
+					Message message = new Message("Contrasena actualizada exitosamente!!", "success", "alert-success");
 					session.setAttribute("message", message);
 					response.sendRedirect("profile.jsp");
 				}

@@ -95,7 +95,7 @@ public class UserDao {
 				user.setUserCity(set.getString("city"));
 				user.setUserZipcode(set.getString("zipcode"));
 				user.setUserState(set.getString("state"));
-				
+
 				list.add(user);
 			}
 		} catch (Exception e) {

@@ -53,15 +53,15 @@ List<Category> categoryList = catDao.getAllCategories();
 				<ul class="navbar-nav justify-content-end">
 					<li class="nav-item"><button type="button"
 							class="btn nav-link" data-bs-toggle="modal"
-							data-bs-target="#add-category"><i class="fa-solid fa-plus fa-xs"></i>Add Category</button></li>
+							data-bs-target="#add-category"><i class="fa-solid fa-plus fa-xs"></i>Agregar Categoria</button></li>
 					<li class="nav-item"><button type="button"
 							class="btn nav-link" data-bs-toggle="modal"
-							data-bs-target="#add-product"><i class="fa-solid fa-plus fa-xs"></i>Add Product</button></li>
+							data-bs-target="#add-product"><i class="fa-solid fa-plus fa-xs"></i>Agregar Producto</button></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="admin.jsp"><%=admin.getName()%></a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="LogoutServlet?user=admin"><i
-							class="fa-solid fa-user-slash fa-sm" style="color: #fafafa;"></i>&nbsp;Logout</a></li>
+							class="fa-solid fa-user-slash fa-sm" style="color: #fafafa;"></i>&nbsp;Salir</a></li>
 				</ul>
 			</div>
 		</div>
@@ -104,7 +104,7 @@ List<Category> categoryList = catDao.getAllCategories();
 			<form class="d-flex pe-5" role="search" action="products.jsp"
 				method="get">
 				<input name="search" class="form-control me-2" size="50"
-					type="search" placeholder="Search for products" aria-label="Search"
+					type="search" placeholder="Buscar productos" aria-label="Search"
 					style="background-color: white !important;">
 				<button class="btn btn-outline-light" type="submit">Buscar</button>
 			</form>
@@ -125,7 +125,7 @@ List<Category> categoryList = catDao.getAllCategories();
 					aria-current="page" href="profile.jsp"><%=user.getUserName()%></a></li>
 				<li class="nav-item pe-3"><a class="nav-link"
 					aria-current="page" href="LogoutServlet?user=user"><i
-						class="fa-solid fa-user-slash" style="color: #fafafa;"></i>&nbsp;Logout</a></li>
+						class="fa-solid fa-user-slash" style="color: #fafafa;"></i>&nbsp;Salir</a></li>
 			</ul>
 			<%
 			} else {
@@ -133,7 +133,7 @@ List<Category> categoryList = catDao.getAllCategories();
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active pe-2"><a class="nav-link"
 					aria-current="page" href="register.jsp"> <i
-						class="fa-solid fa-user-plus" style="color: #ffffff;"></i>&nbsp;Registrarse
+						class="fa-solid fa-user-plus" style="color: #ffffff;"></i>&nbsp;Unirse
 				</a></li>
 				<li class="nav-item pe-2"><a class="nav-link"
 					aria-current="page" href="login.jsp"><i

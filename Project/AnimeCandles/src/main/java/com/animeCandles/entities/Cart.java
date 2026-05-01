@@ -1,12 +1,11 @@
 package com.animeCandles.entities;
 
 public class Cart {
-	
 	private int cartId;
 	private int userId;
 	private int productId;
 	private int quantity;
-	
+
 	public Cart() {
 		super();
 	}
@@ -49,6 +48,4 @@ public class Cart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 }
