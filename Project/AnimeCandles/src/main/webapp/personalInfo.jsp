@@ -71,9 +71,9 @@ if (user1==null) {
 					<div class="row mt-2">
 						<label class="form-label">Departamento</label>
 						<div class="input-group mb-3">
-							<input class="form-control" type="text" value="<%=user1.getUserState()%>">
+							<input class="form-control" type="text" value="<%=user1.getUserState()%>" readonly="readonly">
 							<select name="state" id="state-list" class="form-select">
-								<option selected>--Seleccionar departamento--</option>
+								<option value="" selected disabled hidden>--Seleccionar departamento--</option>
 								<option value="Ahuachapan">Ahuachapan</option>
 								<option value="Cabanas">Cabanas</option>
 								<option value="Chalatenango">Chalatenango</option>

@@ -136,6 +136,25 @@ a {
 	</div>
 	<!--end-->
 
+	
+		<!-- TERCER CONTENEDOR CON 1 OPCION-->
+		<div class="container">
+			<div class="row px-3 py-3">
+				<div class="col-md-4">
+					<a href="sus_activity.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/danger.png" style="max-width: 80px;" class="img-fluid">
+									<h4 class="card-title mt-3">Ordenes Sospechosas</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+
 	<!-- add category modal-->
 	<div class="modal fade" id="add-category" tabindex="-1"
 		aria-labelledby="addCategoryModalLabel" aria-hidden="true">

@@ -103,7 +103,7 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 					}
 					%></td>
 					<td><select id="operation" name="status" class="form-select">
-							<option>--Seleccionar Operacion--</option>
+							<option disabled selected>--Seleccionar Operacion--</option>
 							<option value="Order Confirmed">Pedido Confirmado</option>
 							<option value="Shipped">Enviado</option>
 							<option value="Out For Delivery">En Reparto</option>
