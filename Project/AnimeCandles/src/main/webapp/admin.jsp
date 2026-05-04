@@ -137,7 +137,7 @@ a {
 	<!--end-->
 
 	
-		<!-- TERCER CONTENEDOR CON 1 OPCION-->
+		<!-- TERCER CONTENEDOR CON 2 OPCION-->
 		<div class="container">
 			<div class="row px-3 py-3">
 				<div class="col-md-4">
@@ -146,6 +146,16 @@ a {
 							<div class="card-body">
 								<img src="Images/danger.png" style="max-width: 80px;" class="img-fluid">
 									<h4 class="card-title mt-3">Ordenes Sospechosas</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="cancelled_orders.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/cancelled_orders.png" style="max-width: 80px;" class="img-fluid">
+									<h4 class="card-title mt-3">Ordenes Canceladas</h4>
 							</div>
 						</div>
 					</a>

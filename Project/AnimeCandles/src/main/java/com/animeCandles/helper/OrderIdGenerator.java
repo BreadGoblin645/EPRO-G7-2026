@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class OrderIdGenerator {
 
+	// Genera un identificador visible para la orden usando fecha y hora actual.
 	public static String getOrderId() {
 		String orderId = "";
 

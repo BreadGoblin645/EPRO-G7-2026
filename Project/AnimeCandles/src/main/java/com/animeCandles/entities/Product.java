@@ -124,13 +124,14 @@ public class Product {
 		this.categoryId = categoryId;
 	}
 
-	//calculate price of product by applying discount
+	// Calcula el precio final aplicando el porcentaje de descuento.
     public int getProductPriceAfterDiscount(){
         int discount = (int) ((this.getProductDiscount()/100.0) * this.getProductPrice());
         return (int) (this.getProductPrice() - discount);
     }
 	
 	@Override
+	// Devuelve una representacion de texto util para depuracion.
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productDescription="
 				+ productDescription + ", productPrice=" + productPrice + ", productDiscount=" + productDiscount

@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Registra un nuevo usuario y envia el correo de bienvenida si se guarda bien.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

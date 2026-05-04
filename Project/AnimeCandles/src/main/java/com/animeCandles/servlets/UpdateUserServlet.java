@@ -16,6 +16,7 @@ import com.animeCandles.helper.ConnectionProvider;
 public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Actualiza direccion, perfil o elimina usuarios segun la operacion recibida.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -85,8 +86,8 @@ public class UpdateUserServlet extends HttpServlet {
 	}
 
 	@Override
+	// Reutiliza la misma logica del POST cuando la accion llega por GET.
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(req, resp);
 	}
 

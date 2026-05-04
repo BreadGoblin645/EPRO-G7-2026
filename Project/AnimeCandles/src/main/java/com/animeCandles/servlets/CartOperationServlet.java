@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 public class CartOperationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Actualiza cantidades del carrito y sincroniza el inventario del producto.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
@@ -62,6 +63,7 @@ public class CartOperationServlet extends HttpServlet {
 
 	}
 
+	// Permite que las operaciones del carrito tambien sean enviadas por POST.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);

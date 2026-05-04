@@ -24,6 +24,7 @@ import jakarta.servlet.http.Part;
 public class AddOperationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Procesa las operaciones de categorias y productos.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -197,8 +198,8 @@ public class AddOperationServlet extends HttpServlet {
 	}
 
 	@Override
+	// Reutiliza la misma logica del POST cuando la accion llega por GET.
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(req, resp);
 	}
 }

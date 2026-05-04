@@ -13,6 +13,7 @@ import jakarta.mail.internet.MimeMessage;
 
 public class Mail {
 
+	// Envia un correo HTML usando la configuracion definida en mail.properties.
 	public static void sendMail(String recipientMailId, String subject, String body) {
 
 		try {
@@ -49,6 +50,7 @@ public class Mail {
 
 			Session session = Session.getInstance(properties, new Authenticator() {
 				@Override
+				// Entrega las credenciales SMTP al cliente de correo.
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(emailId, password);
 				}

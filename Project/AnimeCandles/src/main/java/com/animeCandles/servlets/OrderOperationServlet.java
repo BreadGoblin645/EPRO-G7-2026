@@ -14,6 +14,9 @@ import com.animeCandles.entities.OrderedProduct;
 import com.animeCandles.entities.Product;
 import com.animeCandles.entities.User;
 import com.animeCandles.helper.ConnectionProvider;
+import com.animeCandles.helper.FraudDetectionHelper;
+import com.animeCandles.helper.FraudDetectionHelper.FraudContext;
+import com.animeCandles.helper.FraudDetectionHelper.FraudResult;
 import com.animeCandles.helper.MailMessenger;
 import com.animeCandles.helper.OrderIdGenerator;
 
@@ -26,6 +29,7 @@ import jakarta.servlet.http.HttpSession;
 public class OrderOperationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Crea una orden desde carrito o compra directa y aplica revision antifraude.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
@@ -34,19 +38,41 @@ public class OrderOperationServlet extends HttpServlet {
 		String paymentType = request.getParameter("payementMode");
 		User user = (User) session.getAttribute("activeUser");
 		String orderId = OrderIdGenerator.getOrderId();
-		String status = "Order Placed";
 
 		if (from.trim().equals("cart")) {
 			try {
-
-				Order order = new Order(orderId, status, paymentType, user.getUserId());
-				OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
-				int id = orderDao.insertOrder(order);
 
 				CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
 				List<Cart> listOfCart = cartDao.getCartListByUserId(user.getUserId());
 				OrderedProductDao orderedProductDao = new OrderedProductDao(ConnectionProvider.getConnection());
 				ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+				OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
+				int totalQuantity = 0;
+				float totalAmount = 0;
+				boolean completeStockPurchase = false;
+				int maxProductQuantity = 0;
+
+				for (Cart item : listOfCart) {
+					Product prod = productDao.getProductsByProductId(item.getProductId());
+					int availableStock = productDao.getProductQuantityById(item.getProductId());
+					int originalStock = availableStock + item.getQuantity();
+					totalQuantity += item.getQuantity();
+					totalAmount += prod.getProductPriceAfterDiscount() * item.getQuantity();
+					if (item.getQuantity() > maxProductQuantity) {
+						maxProductQuantity = item.getQuantity();
+					}
+					if (originalStock > 0 && item.getQuantity() >= originalStock) {
+						completeStockPurchase = true;
+					}
+				}
+
+				FraudResult fraudResult = FraudDetectionHelper.analyze(new FraudContext(user, paymentType, totalQuantity,
+						totalAmount, completeStockPurchase, orderDao.hasRecentOrderByUserId(user.getUserId(), 30),
+						maxProductQuantity, orderDao.countOrdersByUserIdWithinHours(user.getUserId(), 24),
+						orderDao.countCancelledOrdersByUserId(user.getUserId())));
+				Order order = createOrder(orderId, paymentType, user.getUserId(), fraudResult);
+				int id = orderDao.insertOrder(order);
+
 				for (Cart item : listOfCart) {
 
 					Product prod = productDao.getProductsByProductId(item.getProductId());
@@ -55,7 +81,8 @@ public class OrderOperationServlet extends HttpServlet {
 					float price = prod.getProductPriceAfterDiscount();
 					String image = prod.getProductImages();
 
-					OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id);
+					OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id,
+							item.getProductId());
 					orderedProductDao.insertOrderedProduct(orderedProduct);
 				}
 				session.removeAttribute("from");
@@ -72,9 +99,7 @@ public class OrderOperationServlet extends HttpServlet {
 			try {
 
 				int pid = (int) session.getAttribute("pid");
-				Order order = new Order(orderId, status, paymentType, user.getUserId());
 				OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
-				int id = orderDao.insertOrder(order);
 				OrderedProductDao orderedProductDao = new OrderedProductDao(ConnectionProvider.getConnection());
 				ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 
@@ -83,8 +108,16 @@ public class OrderOperationServlet extends HttpServlet {
 				int prodQty = 1;
 				float price = prod.getProductPriceAfterDiscount();
 				String image = prod.getProductImages();
+				int availableStock = productDao.getProductQuantityById(pid);
+				boolean completeStockPurchase = availableStock > 0 && prodQty >= availableStock;
+				FraudResult fraudResult = FraudDetectionHelper.analyze(new FraudContext(user, paymentType, prodQty,
+						price, completeStockPurchase, orderDao.hasRecentOrderByUserId(user.getUserId(), 30), prodQty,
+						orderDao.countOrdersByUserIdWithinHours(user.getUserId(), 24),
+						orderDao.countCancelledOrdersByUserId(user.getUserId())));
+				Order order = createOrder(orderId, paymentType, user.getUserId(), fraudResult);
+				int id = orderDao.insertOrder(order);
 
-				OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id);
+				OrderedProduct orderedProduct = new OrderedProduct(prodName, prodQty, price, image, id, pid);
 				orderedProductDao.insertOrderedProduct(orderedProduct);
 
 				//updating(decreasing) quantity of product in database
@@ -101,9 +134,19 @@ public class OrderOperationServlet extends HttpServlet {
         response.sendRedirect("index.jsp");
 	}
 
+	// Reutiliza el flujo de creacion cuando la peticion llega por GET.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
+	}
+
+	// Construye la orden con estado normal o FLAGGED segun el resultado antifraude.
+	private Order createOrder(String orderId, String paymentType, int userId, FraudResult fraudResult) {
+		String status = fraudResult.isSuspicious() ? "FLAGGED" : "Order Placed";
+		Order order = new Order(orderId, status, paymentType, userId);
+		order.setSuspicious(fraudResult.isSuspicious());
+		order.setSuspiciousReason(fraudResult.getReason());
+		return order;
 	}
 
 }

@@ -20,13 +20,13 @@ if (activeAdmin == null) {
 }
 OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
 OrderedProductDao ordProdDao = new OrderedProductDao(ConnectionProvider.getConnection());
-List<Order> orderList = orderDao.getSuspiciousOrders();
+List<Order> orderList = orderDao.getCancelledOrders();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ordenes Sospechosas</title>
+<title>Ordenes Canceladas</title>
 <%@include file="Components/common_css_js.jsp"%>
 </head>
 <body>
@@ -37,23 +37,24 @@ List<Order> orderList = orderDao.getSuspiciousOrders();
 		if (orderList == null || orderList.size() == 0) {
 		%>
 		<div class="container mt-5 mb-5 text-center">
-			<img src="Images/danger.png" style="max-width: 200px;"
+			<img src="Images/no-results.png" style="max-width: 200px;"
 				class="img-fluid">
-			<h4 class="mt-3">No se encontraron ordenes sospechosas</h4>
+			<h4 class="mt-3">No se encontraron ordenes canceladas</h4>
 		</div>
 		<%
 		} else {
 		%>
 		<div class="container-fluid">
 			<table class="table table-hover">
-				<tr class="table-warning" style="font-size: 18px;">
+				<tr class="table-danger" style="font-size: 18px;">
 					<th class="text-center">Producto</th>
 					<th>ID Pedido</th>
 					<th>Detalles</th>
 					<th>Razon sospechosa</th>
+					<th>Revisado Por</th>
 					<th>Fecha creacion</th>
+					<th>Fecha revision</th>
 					<th>Estado</th>
-					<th class="text-center">Accion</th>
 				</tr>
 				<%
 				for (Order order : orderList) {
@@ -68,18 +69,10 @@ List<Order> orderList = orderDao.getSuspiciousOrders();
 					<td><%=orderProduct.getName()%><br>Cantidad: <%=orderProduct.getQuantity()%><br>Precio
 						Total: $<%=orderProduct.getPrice() * orderProduct.getQuantity()%></td>
 					<td><%=order.getSuspiciousReason() != null ? order.getSuspiciousReason() : "Sin razon registrada"%></td>
+					<td><%=order.getReviewedBy() != null ? order.getReviewedBy() : "No registrado"%></td>
 					<td><%=order.getDate()%></td>
+					<td><%=order.getReviewDate() != null ? order.getReviewDate() : "No registrada"%></td>
 					<td><%=order.getStatus()%></td>
-					<td class="text-center">
-						<form action="UpdateOrderServlet?oid=<%=order.getId()%>" method="post" class="d-inline">
-							<input type="hidden" name="redirect" value="sus_activity.jsp">
-							<button type="submit" name="status" value="Order Confirmed" class="btn btn-success btn-sm">Aceptar</button>
-						</form>
-						<form action="UpdateOrderServlet?oid=<%=order.getId()%>" method="post" class="d-inline">
-							<input type="hidden" name="redirect" value="sus_activity.jsp">
-							<button type="submit" name="status" value="Order Cancelled" class="btn btn-danger btn-sm">Cancelar</button>
-						</form>
-					</td>
 				</tr>
 				<%
 					}

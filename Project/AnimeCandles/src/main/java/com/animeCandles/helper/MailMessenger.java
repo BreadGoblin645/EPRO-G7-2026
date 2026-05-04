@@ -2,6 +2,7 @@ package com.animeCandles.helper;
 
 public class MailMessenger {
 
+	// Prepara y envia el correo de bienvenida despues del registro.
 	public static void successfullyRegister(String userName, String userEmail) {
 
 		String subject = "Bienvenido a animeCandles - Registro exitoso";
@@ -17,6 +18,7 @@ public class MailMessenger {
 		}
 	}
 
+	// Prepara y envia la confirmacion cuando una orden queda creada.
 	public static void successfullyOrderPlaced(String userName, String userEmail, String orderId, String OrderDate) {
 		String subject = "Confirmación de pedido - Tu producto está en camino";
 		String body = "Hola " + userName
@@ -32,6 +34,7 @@ public class MailMessenger {
 		}
 	}
 
+	// Prepara y envia el aviso cuando la orden cambia a envio o reparto.
 	public static void orderShipped(String userName, String userEmail, String orderId, String OrderDate) {
 		String subject = "Tu pedido está en camino";
 		String body = "Hola " + userName
@@ -47,6 +50,7 @@ public class MailMessenger {
 		}
 	}
 
+	// Envia el codigo OTP usado para recuperar o cambiar contrasena.
 	public static void sendOtp(String userEmail, int code) {
 		String subject = "Código de verificación para cambio de contraseña";
 		String body = "Hola, "

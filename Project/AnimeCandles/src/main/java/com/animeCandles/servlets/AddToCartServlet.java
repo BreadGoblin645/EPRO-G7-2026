@@ -18,6 +18,7 @@ public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
+	// Agrega un producto al carrito y descuenta una unidad del inventario.
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int uid = Integer.parseInt(req.getParameter("uid"));
 		int pid = Integer.parseInt(req.getParameter("pid"));

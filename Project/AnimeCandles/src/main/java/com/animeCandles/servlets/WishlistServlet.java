@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class WishlistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Agrega o remueve productos de la lista de deseos del usuario.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int uid = Integer.parseInt(request.getParameter("uid"));
@@ -35,6 +36,7 @@ public class WishlistServlet extends HttpServlet {
 		}
 	}
 
+	// Calcula una URL segura para volver a la pagina anterior despues de la accion.
 	private String getRedirectUrl(HttpServletRequest request, String fallback) {
 		String referer = request.getHeader("referer");
 		if (referer == null || referer.trim().isEmpty()) {
@@ -66,6 +68,7 @@ public class WishlistServlet extends HttpServlet {
 		}
 	}
 
+	// Permite ejecutar las acciones de wishlist tambien por POST.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

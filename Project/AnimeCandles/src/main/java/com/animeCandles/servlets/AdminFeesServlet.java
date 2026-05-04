@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class AdminFeesServlet extends HttpServlet {
 
     @Override
+    // Valida y actualiza las tarifas de envio y empaquetado desde el panel admin.
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

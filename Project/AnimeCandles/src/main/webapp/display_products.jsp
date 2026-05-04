@@ -36,7 +36,7 @@ ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 				<th>Nombre</th>
 				<th class="text-start">Categoria</th>
 				<th>Precio (Sin descuento)</th>
-				<th class="text-start">Cantidad</th>
+				<th class="text-start">Stock</th>
 				<th class="text-start">Descuento</th>
 				<th>Accion</th>
 			</tr>

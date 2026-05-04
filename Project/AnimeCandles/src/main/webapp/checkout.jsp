@@ -190,7 +190,7 @@ float packagingFee = fees[1];
                             </tr>
                             <tr>
 	                                <td>Envio</td>
-                                <td>$ <%=shippingFee%>></td>
+                                <td>$ <%=shippingFee%></td>
                             </tr>
                             <tr>
 	                                <td>Empaquetado</td>

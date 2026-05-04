@@ -228,6 +228,20 @@ public class ProductDao {
 		}
 	}
 
+	public void increaseQuantity(int id, int qty) {
+		try {
+			String query = "update product set quantity = quantity + ? where pid = ?";
+			PreparedStatement psmt = this.con.prepareStatement(query);
+			psmt.setInt(1, qty);
+			psmt.setInt(2, id);
+
+			psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void deleteProduct(int pid) {
 		try {
 			String query = "delete from product where pid = ?";

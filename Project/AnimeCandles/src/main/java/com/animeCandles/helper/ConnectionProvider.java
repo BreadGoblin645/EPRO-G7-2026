@@ -8,6 +8,7 @@ import java.util.Properties;
 public class ConnectionProvider {
     private static Connection connection;
 
+    // Abre o reutiliza la conexion principal a MySQL usando db.properties.
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {

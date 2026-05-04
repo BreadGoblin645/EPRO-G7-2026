@@ -8,6 +8,7 @@ public class OrderedProduct {
 	private float price;
 	private String image;
 	private int orderId;
+	private int productId;
 	
 	public OrderedProduct() {
 		super();
@@ -20,6 +21,16 @@ public class OrderedProduct {
 		this.price = price;
 		this.image = image;
 		this.orderId = orderId;
+	}
+
+	public OrderedProduct(String name, int quantity, float price, String image, int orderId, int productId) {
+		super();
+		this.name = name;
+		this.quantity = quantity;
+		this.price = price;
+		this.image = image;
+		this.orderId = orderId;
+		this.productId = productId;
 	}
 
 	public int getId() {
@@ -68,6 +79,14 @@ public class OrderedProduct {
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
 }

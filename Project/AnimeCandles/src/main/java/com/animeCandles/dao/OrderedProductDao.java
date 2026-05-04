@@ -19,13 +19,14 @@ public class OrderedProductDao {
 	
 	public void insertOrderedProduct(OrderedProduct ordProduct) {
 		try {
-			String query = "insert into ordered_product(name, quantity, price, image, orderid) values(?, ?, ?, ?, ?)";
+			String query = "insert into ordered_product(name, quantity, price, image, orderid, productid) values(?, ?, ?, ?, ?, ?)";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, ordProduct.getName());
 			psmt.setInt(2, ordProduct.getQuantity());
 			psmt.setFloat(3,ordProduct.getPrice());
 			psmt.setString(4, ordProduct.getImage());
 			psmt.setInt(5, ordProduct.getOrderId());
+			psmt.setInt(6, ordProduct.getProductId());
 
 			psmt.executeUpdate();
 
@@ -47,6 +48,7 @@ public class OrderedProductDao {
 				orderProd.setPrice(rs.getFloat("price"));
 				orderProd.setImage(rs.getString("image"));
 				orderProd.setOrderId(oid);
+				orderProd.setProductId(rs.getInt("productid"));
 
 				list.add(orderProd);
 			}

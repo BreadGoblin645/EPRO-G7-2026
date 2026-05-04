@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Crea o elimina administradores segun la operacion recibida.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String operation = request.getParameter("operation");
@@ -53,6 +54,7 @@ public class AdminServlet extends HttpServlet {
 		response.sendRedirect("display_admin.jsp");
 	}
 	
+	// Permite procesar las mismas acciones cuando el formulario envia POST.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

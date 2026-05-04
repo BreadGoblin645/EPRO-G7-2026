@@ -20,7 +20,7 @@ if (activeAdmin == null) {
 }
 OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
 OrderedProductDao ordProdDao = new OrderedProductDao(ConnectionProvider.getConnection());
-List<Order> orderList = orderDao.getAllOrder();
+List<Order> orderList = orderDao.getNormalOrders();
 UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 %>
 <!DOCTYPE html>
@@ -108,6 +108,8 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 							<option value="Shipped">Enviado</option>
 							<option value="Out For Delivery">En Reparto</option>
 							<option value="Delivered">Entregado</option>
+							<option value="FLAGGED">Marcar sospechosa</option>
+							<option value="Order Cancelled">Cancelar orden</option>
 					</select></td>
 					<td>
 						<%
