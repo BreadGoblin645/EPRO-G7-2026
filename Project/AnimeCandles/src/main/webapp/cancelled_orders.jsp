@@ -33,6 +33,11 @@ List<Order> orderList = orderDao.getCancelledOrders();
 	<%@include file="Components/navbar.jsp"%>
 
 	<div class="container-fluid px-3 py-3">
+		<div class="mb-3">
+			<a href="display_orders.jsp" class="btn btn-outline-primary btn-sm">Ordenes normales</a>
+			<a href="sus_activity.jsp" class="btn btn-outline-warning btn-sm">Ordenes sospechosas</a>
+			<a href="cancelled_orders.jsp" class="btn btn-danger btn-sm">Ordenes canceladas</a>
+		</div>
 		<%
 		if (orderList == null || orderList.size() == 0) {
 		%>

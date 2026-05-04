@@ -33,6 +33,11 @@ List<Order> orderList = orderDao.getSuspiciousOrders();
 	<%@include file="Components/navbar.jsp"%>
 
 	<div class="container-fluid px-3 py-3">
+		<div class="mb-3">
+			<a href="display_orders.jsp" class="btn btn-outline-primary btn-sm">Ordenes normales</a>
+			<a href="sus_activity.jsp" class="btn btn-warning btn-sm">Ordenes sospechosas</a>
+			<a href="cancelled_orders.jsp" class="btn btn-outline-danger btn-sm">Ordenes canceladas</a>
+		</div>
 		<%
 		if (orderList == null || orderList.size() == 0) {
 		%>
@@ -77,7 +82,8 @@ List<Order> orderList = orderDao.getSuspiciousOrders();
 						</form>
 						<form action="UpdateOrderServlet?oid=<%=order.getId()%>" method="post" class="d-inline">
 							<input type="hidden" name="redirect" value="sus_activity.jsp">
-							<button type="submit" name="status" value="Order Cancelled" class="btn btn-danger btn-sm">Cancelar</button>
+							<button type="submit" name="status" value="Order Cancelled" class="btn btn-danger btn-sm"
+								onclick="return confirm('Seguro que deseas cancelar esta orden sospechosa? El stock sera restaurado.');">Cancelar</button>
 						</form>
 					</td>
 				</tr>

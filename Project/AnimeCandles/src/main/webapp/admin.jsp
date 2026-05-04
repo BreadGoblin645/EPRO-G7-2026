@@ -1,4 +1,6 @@
 <%@page import="com.animeCandles.entities.Message"%>
+<%@page import="com.animeCandles.dao.OrderDao"%>
+<%@page import="com.animeCandles.helper.ConnectionProvider"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page errorPage="error_exception.jsp"%>
@@ -10,6 +12,9 @@ if (activeAdmin == null) {
 	response.sendRedirect("adminlogin.jsp");
 	return;
 }
+OrderDao orderDao = new OrderDao(ConnectionProvider.getConnection());
+int suspiciousOrdersCount = orderDao.getSuspiciousOrders().size();
+int cancelledOrdersCount = orderDao.getCancelledOrders().size();
 %>
 <!DOCTYPE html>
 <html>
@@ -146,6 +151,7 @@ a {
 							<div class="card-body">
 								<img src="Images/danger.png" style="max-width: 80px;" class="img-fluid">
 									<h4 class="card-title mt-3">Ordenes Sospechosas</h4>
+									<span class="badge text-bg-warning"><%=suspiciousOrdersCount%> pendientes</span>
 							</div>
 						</div>
 					</a>
@@ -156,6 +162,7 @@ a {
 							<div class="card-body">
 								<img src="Images/cancelled_orders.png" style="max-width: 80px;" class="img-fluid">
 									<h4 class="card-title mt-3">Ordenes Canceladas</h4>
+									<span class="badge text-bg-danger"><%=cancelledOrdersCount%> canceladas</span>
 							</div>
 						</div>
 					</a>

@@ -257,15 +257,16 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 	}
-	public void cancelOrder(int oid, boolean suspicious, String reviewedBy) {
+	public void cancelOrder(int oid, boolean suspicious, String reviewedBy, String suspiciousReason) {
 		try {
-			String query = "update `order` set status = ?, is_suspicious = ?, reviewed_by = ?, review_date = ? where id = ?";
+			String query = "update `order` set status = ?, is_suspicious = ?, suspicious_reason = ?, reviewed_by = ?, review_date = ? where id = ?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, "Order Cancelled");
 			psmt.setBoolean(2, suspicious);
-			psmt.setString(3, reviewedBy);
-			psmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
-			psmt.setInt(5, oid);
+			psmt.setString(3, suspiciousReason);
+			psmt.setString(4, reviewedBy);
+			psmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+			psmt.setInt(6, oid);
 
 			psmt.executeUpdate();
 		} catch (Exception e) {

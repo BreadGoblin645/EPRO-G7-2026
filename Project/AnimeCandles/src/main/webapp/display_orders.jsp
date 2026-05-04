@@ -37,6 +37,11 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 	<!-- order details -->
 
 	<div class="container-fluid px-3 py-3">
+		<div class="mb-3">
+			<a href="display_orders.jsp" class="btn btn-primary btn-sm">Ordenes normales</a>
+			<a href="sus_activity.jsp" class="btn btn-outline-warning btn-sm">Ordenes sospechosas</a>
+			<a href="cancelled_orders.jsp" class="btn btn-outline-danger btn-sm">Ordenes canceladas</a>
+		</div>
 		<%
 		if (orderList == null || orderList.size() == 0) {
 		%>
@@ -66,7 +71,7 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 					for (OrderedProduct orderProduct : ordProdList) {
 				%>
 				<form action="UpdateOrderServlet?oid=<%=order.getId()%>"
-					method="post">
+					method="post" onsubmit="return confirmOrderCancellation(this);">
 				<tr>
 					<td class="text-center"><img
 						src="Product_imgs\<%=orderProduct.getImage()%>"
@@ -141,5 +146,14 @@ UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 	<!-- Footer -->
     <%@ include file="Components/footer.jsp" %>
 	<!-- end -->
+	<script type="text/javascript">
+		function confirmOrderCancellation(form) {
+			var selectedStatus = form.elements["status"].value;
+			if (selectedStatus === "Order Cancelled") {
+				return confirm("Seguro que deseas cancelar esta orden? El stock sera restaurado.");
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>

@@ -46,7 +46,11 @@ public class UpdateOrderServlet extends HttpServlet {
 		} else if (status.equals("Order Cancelled")) {
 			Admin activeAdmin = (Admin) request.getSession().getAttribute("activeAdmin");
 			String reviewedBy = activeAdmin != null ? activeAdmin.getName() : "Administrador";
-			orderDao.cancelOrder(oid, currentOrder.isSuspicious(), reviewedBy);
+			String suspiciousReason = currentOrder.getSuspiciousReason();
+			if (suspiciousReason == null || suspiciousReason.trim().isEmpty()) {
+				suspiciousReason = "Cancelada manualmente por administrador";
+			}
+			orderDao.cancelOrder(oid, currentOrder.isSuspicious(), reviewedBy, suspiciousReason);
 		} else if ("FLAGGED".equals(currentOrder.getStatus()) && currentOrder.isSuspicious()
 				&& status.equals("Order Confirmed")) {
 			Admin activeAdmin = (Admin) request.getSession().getAttribute("activeAdmin");
