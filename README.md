@@ -15,18 +15,18 @@ EPRO-G7-2026/
 ├── Project/
 │   └── AnimeCandles/
 │       ├── src/
-│       │   ├── main/
-│       │   │   ├── java/          # Código fuente Java
-│       │   │   ├── webapp/        # Todas las JSP (Java Server Pages)
-│       │   │   └── resources/     # application.properties, templates, static
-│       │   └── pom.xml
+│       │   └── main/
+│       │       ├── java/          # Código fuente Java (dao, entities, helper, servlets)
+│       │       ├── webapp/        # Todas las JSP (Java Server Pages), media, css, componensts, etc.
+│       │       └── resources/     # db.properties, mail.properties
+│       ├── pom.xml
+│       └── target/                # Deployed proyect
 │
-├── Docs/                          # Documentacion del proyecto
+├── Docs/                          # Documentacion del proyecto y
 │   ├── Entregas/
 │   └── diagramas/
 │
 ├── SQL/                           # Scripts para crear la base de datos
-│   ├── schema.sql
 │   └── data.sql
 │
 ├── README.md
@@ -37,12 +37,15 @@ EPRO-G7-2026/
 
 ### Desarrollo
 
-Este proyecto fue desarrollado utilizando el siguiente stack tecnologico:
+Este proyecto fue desarrollado utilizando el siguiente stack tecnológico:
+
 - Java 21
 - Apache Tomcat 11.0.9
 - Jakarta Servlet API 6.1
-- JSP (Jakarta Server Pages)
-- Maven (gestion de dependencias y empaquetado WAR)
+- JSP / Jakarta Server Pages
+- Maven para gestión de dependencias y empaquetado WAR
 - MySQL 8+
-- JDBC (Driver MySQL Connector/J 9.5.0)
+- JDBC con MySQL Connector/J 9.5.0
+- HTML, CSS, JavaScript y Bootstrap
 - Visual Studio Code
+- Git y GitHub para control de versiones
