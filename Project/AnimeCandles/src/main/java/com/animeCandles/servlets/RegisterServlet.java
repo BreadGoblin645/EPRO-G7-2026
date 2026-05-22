@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 				message = new Message("Error! Intentalo de nuevo!!", "error", "alert-danger");
 			}
 			session.setAttribute("message", message);
-			response.sendRedirect("register.jsp");
+			response.sendRedirect("login.jsp");
 			return;
 
 		} catch (Exception e) {

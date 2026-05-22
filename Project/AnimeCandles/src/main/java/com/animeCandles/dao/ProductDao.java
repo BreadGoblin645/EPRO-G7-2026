@@ -197,7 +197,7 @@ public class ProductDao {
 	public void updateProduct(Product product) {
 		try {
 
-			String query = "update product set name=?, description=?, price=?, quantity=?, discount=?, image=? where pid=?";
+			String query = "update product set name=?, description=?, price=?, quantity=?, discount=?, image=?, cid=? where pid=?";
 			PreparedStatement psmt = this.con.prepareStatement(query);
 			psmt.setString(1, product.getProductName());
 			psmt.setString(2, product.getProductDescription());
@@ -205,7 +205,8 @@ public class ProductDao {
 			psmt.setInt(4, product.getProductQunatity());
 			psmt.setInt(5, product.getProductDiscount());
 			psmt.setString(6, product.getProductImages());
-			psmt.setInt(7, product.getProductId());
+			psmt.setInt(7, product.getCategoryId());
+			psmt.setInt(8, product.getProductId());
 
 			psmt.executeUpdate();
 		} catch (Exception e) {
